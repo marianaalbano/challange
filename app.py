@@ -11,8 +11,10 @@ def login():
             return render_template("homeUser.html")
     else:
         return render_template("login.html")
-        #return "teste"
 
+@app.route("/logoff", methods=["GET"])
+def logoff():
+    return render_template("login.html")
 
 
 if __name__ == "__main__":
