@@ -6,16 +6,15 @@ app = Flask(__name__)
 def login():
     if request.method == 'POST':
         if request.form['username'] == "admin" and request.form["password"] == "admin":
-            return render_template("homeadmin.html")
+            return render_template("admin/main.html")
         elif request.form['username'] == "user" and request.form["password"] == "user":
-            return render_template("homeUser.html")
+            return render_template("user/base.html")
     else:
         return render_template("login.html")
 
 @app.route("/logoff", methods=["GET"])
 def logoff():
     return render_template("login.html")
-
 
 if __name__ == "__main__":
     app.run(debug=True)
