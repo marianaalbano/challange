@@ -14,6 +14,7 @@
 
     <!-- Bootstrap CSS-->
     <link href="/static/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    
 
     <!-- Vendor CSS-->
     <link href="/static/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
@@ -28,19 +29,33 @@
 
 <div class="page-container">
     <div class="main-content">
-            <div style="float: none">
-                <h1>Lista usuários</h1>
-                    <table border="2">
+            
+                <div style="width: 90%; text-align: center"><h3>Usuários cadastrados</h3></div>
+                    <table class="table">
+                     <thead class="thead-light">
                         <tr>
-                            <th>Nome</th>
-                            <th>E-mail</th>
-                            <th>Username</th>
-                            <th>Telefone</th>
+                            
+                            <th scope="col">Nome</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Usuário</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Opções</th>
                         </tr>
-                
+                    </thead>
+                        {% for usuario in usuarios %}
+                        
+                            <tr>
+                                
+                                <th> {{ usuario.name }} </th>
+                                <th> {{ usuario.email }} </th>
+                                <th> {{ usuario.username }} </th>
+                                <th> {{ usuario.telefone }} </th> 
+                                <th scope="col"><a href="/admin/user/{{ usuario.id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;<a href="/admin/user/{{ usuario.id }}/remove"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
+                            </tr>
+                        {% endfor %}
                 
                     </table>
-            </div>         
+                    
     </div>
 </div>
 {% endblock %}
