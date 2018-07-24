@@ -24,10 +24,9 @@ def user():
     if request.method == 'POST':
         return "adicionando usuario"
     else:
-       # usuarios = User()
-    #    usuarios = usuarios.findAll()
-     #   return render_template("user/userList.html", usuarios=usuarios)
-        return render_template("admin/userList.html")
+        usuarios = User()
+        usuarios = usuarios.findAll()
+        return render_template("admin/userList.html", usuarios=usuarios)
 
 @app.route("/user/<id>", methods=["GET", "POST"])
 def edit_user(id):
