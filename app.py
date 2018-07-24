@@ -19,14 +19,15 @@ def login():
 def logoff():
     return render_template("login.html")
 
-@app.route("/user", methods=["GET", "POST"])
+@app.route("/admin/cadastro", methods=["GET", "POST"])
 def user():
     if request.method == 'POST':
         return "adicionando usuario"
     else:
-        usuarios = User()
-        usuarios = usuarios.findAll()
-        return render_template("user/userList.html", usuarios=usuarios)
+       # usuarios = User()
+    #    usuarios = usuarios.findAll()
+     #   return render_template("user/userList.html", usuarios=usuarios)
+        return render_template("admin/userList.html")
 
 @app.route("/user/<id>", methods=["GET", "POST"])
 def edit_user(id):
