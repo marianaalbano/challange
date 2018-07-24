@@ -19,16 +19,18 @@ def login():
 def logoff():
     return render_template("login.html")
 
-@app.route("/admin/cadastro", methods=["GET", "POST"])
+@app.route("/admin/users", methods=["GET", "POST"])
 def user():
     if request.method == 'POST':
-        return "adicionando usuario"
+        usuarios = User()
+        usuarios = usuarios.insertUser(request.form)
+        return render_template("admin/userList.html", usuarios=usuarios)
     else:
         usuarios = User()
         usuarios = usuarios.findAll()
         return render_template("admin/userList.html", usuarios=usuarios)
 
-@app.route("/user/<id>", methods=["GET", "POST"])
+@app.route("/admin/user/<id>", methods=["GET", "POST"])
 def edit_user(id):
     if request.method == 'POST':
         return "Editando usuario" 
@@ -38,7 +40,7 @@ def edit_user(id):
         return render_template("admin/userList.html", usuario=usuario)
 
 
-@app.route("/user/<id>/remove")
+@app.route("/admin/user/<id>/remove")
 def delete_user(id):
     usuario = User()
     usuario = usuario.removeUser(id)
