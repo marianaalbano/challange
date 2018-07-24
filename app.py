@@ -25,18 +25,18 @@ def user():
         return "adicionando usuario"
     else:
         usuarios = User()
-        usuarios.findAll()
-        return "listando user"
+        usuarios = usuarios.findAll()
+        return render_template("user/userList.html", usuarios=usuarios)
 
-@app.route("/user/id", methods=["GET", "POST"])
-def edit_user():
+@app.route("/user/<id>", methods=["GET", "POST"])
+def edit_user(id):
     if request.method == 'POST':
-        return "Editando usuario"
+        return "Editando usuario" 
     else:
         return "edit user"
 
-@app.route("/user/id/remove")
-def delete_user():
+@app.route("/user/<id>/remove")
+def delete_user(id):
     return "delete user"
 
 

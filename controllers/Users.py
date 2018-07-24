@@ -18,4 +18,10 @@ class User():
         user.passowrd = info['password']
         user.is_admin = False
         db.session.add(user)
-        db.session.commit()
+        return db.session.commit()
+
+
+    def removeUser(self, id):
+        user = userDB.query.get(id)
+        db.session.delete(user)
+        return db.session.commit()
