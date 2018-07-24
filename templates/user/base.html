@@ -28,6 +28,7 @@
     <link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
+     {% block css %} {% endblock %}
   
 
 </head>
@@ -50,21 +51,16 @@
                                 <i class="fas fa-tachometer-alt"></i>Inicio</a>
                         </li>
                         <li>
-                            <a href="/myprofile">
+                            <a href="#">
                                 <i class="fas fa-chart-bar"></i>Meu perfil</a>
                         </li>
-                          <li>
-                            <a href="/logoff">
-                                <i class="fas fa-chart-bar"></i>Resultados</a>
-                        </li>
-                        
                         <li>
-                            <a href="/settings">
-                                <i class="fas fa-tachometer-alt"></i>Configuração</a>
+                            <a href="#">
+                                <i class="fas fa-table"></i>Questionário</a>
                         </li>
                         <li>
                             <a href="/logoff">
-                                <i class="fas fa-table"></i>Sair</a>
+                                <i class="far fa-check-square"></i>Sair</a>
                         </li>
                         
                         
@@ -131,11 +127,11 @@
             <!-- FIM TOPO-->
 
             <!-- CONTEUDO PRINCIPAL-->
-            <div class="main-content">
-                
-            </div>
-            <!-- END MAIN CONTENT-->
-            <!-- END PAGE CONTAINER-->
+            
+            {% block content %} {% endblock %}
+            
+            <!-- FIM CONTEUDO PRINCIPAL -->
+            <!-- FIM PAGE CONTAINER-->
         </div>
 
     </div>
