@@ -44,7 +44,7 @@ def edit_user(id):
 def delete_user(id):
     usuario = User()
     usuario = usuario.removeUser(id)
-    return "Usuário Deletado com sucesso"
+    return "Usuario Deletado com sucesso"
 
 
 if __name__ == "__main__":
