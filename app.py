@@ -19,16 +19,20 @@ def login():
 def logoff():
     return render_template("login.html")
 
-@app.route("/admin/users", methods=["GET", "POST"])
+@app.route("/admin/users", methods=["GET"])
 def user():
+    usuarios = User()
+    usuarios = usuarios.findAll()
+    return render_template("admin/userList.html", usuarios=usuarios)
+
+@app.route("/admin/user/new", methods=["GET", "POST"])
+def new_user():
     if request.method == 'POST':
-        usuarios = User()
-        usuarios = usuarios.insertUser(request.form)
-        return render_template("admin/userList.html", usuarios=usuarios)
+        usuario = User()
+        usuario = usuario.insertUser(request.form)
+        return render_template("admin/userCadastro.html")
     else:
-        usuarios = User()
-        usuarios = usuarios.findAll()
-        return render_template("admin/userList.html", usuarios=usuarios)
+        return render_template("admin/userCadastro.html")
 
 @app.route("/admin/user/<id>", methods=["GET", "POST"])
 def edit_user(id):
