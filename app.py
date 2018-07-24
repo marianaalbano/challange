@@ -33,11 +33,16 @@ def edit_user(id):
     if request.method == 'POST':
         return "Editando usuario" 
     else:
-        return "edit user"
+        usuario = User()
+        usuario = usuario.findOne(id)
+        return render_template("admin/userList.html", usuario=usuario)
+
 
 @app.route("/user/<id>/remove")
 def delete_user(id):
-    return "delete user"
+    usuario = User()
+    usuario = usuario.removeUser(id)
+    return "Usuário Deletado com sucesso"
 
 
 if __name__ == "__main__":
