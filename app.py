@@ -1,4 +1,5 @@
-from model import db, app
+from model.Users import db, app
+from controllers.Users import User
 from flask import Flask, request, render_template
 
 
@@ -23,6 +24,8 @@ def user():
     if request.method == 'POST':
         return "adicionando usuario"
     else:
+        usuarios = User()
+        usuarios.findAll()
         return "listando user"
 
 @app.route("/user/id", methods=["GET", "POST"])
