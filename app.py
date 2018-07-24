@@ -18,6 +18,25 @@ def login():
 def logoff():
     return render_template("login.html")
 
+@app.route("/user", methods=["GET", "POST"])
+def user():
+    if request.method == 'POST':
+        return "adicionando usuario"
+    else:
+        return "listando user"
+
+@app.route("/user/id", methods=["GET", "POST"])
+def edit_user():
+    if request.method == 'POST':
+        return "Editando usuario"
+    else:
+        return "edit user"
+
+@app.route("/user/id/remove")
+def delete_user():
+    return "delete user"
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
