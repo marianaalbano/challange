@@ -19,25 +19,37 @@ def login():
 def logoff():
     return render_template("login.html")
 
-@app.route("/admin/users", methods=["GET", "POST"])
-def user():
-    if request.method == 'POST':
-        return "adicionando usuario"
-    else:
-        usuarios = User()
-        usuarios = usuarios.findAll()
-        return render_template("admin/userList.html", usuarios=usuarios)
 
-@app.route("/user/<id>", methods=["GET", "POST"])
+@app.route("/admin/users", methods=["GET"])
+def user():
+    usuarios = User()
+    usuarios = usuarios.findAll()
+    return render_template("admin/userList.html", usuarios=usuarios)
+
+@app.route("/admin/user/new", methods=["GET", "POST"])
+def new_user():
+    if request.method == 'POST':
+        usuario = User()
+        usuario = usuario.insertUser(request.form)
+        return render_template("admin/userCadastro.html")
+    else:
+        return render_template("admin/userCadastro.html")
+
+@app.route("/admin/user/<id>", methods=["GET", "POST"])
 def edit_user(id):
     if request.method == 'POST':
         return "Editando usuario" 
     else:
-        return "edit user"
+        usuario = User()
+        usuario = usuario.findOne(id)
+        return render_template("admin/userList.html", usuario=usuario)
 
-@app.route("/user/<id>/remove")
+
+@app.route("/admin/user/<id>/remove")
 def delete_user(id):
-    return "delete user"
+    usuario = User()
+    usuario = usuario.removeUser(id)
+    return "Usuario Deletado com sucesso"
 
 
 if __name__ == "__main__":

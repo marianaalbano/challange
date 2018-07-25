@@ -4171,6 +4171,7 @@ section {
 /* ----- Table ----- */
 .table {
     margin: 0;
+    width: 90%;
 }
 
 .table-responsive.table--no-card {
@@ -14594,4 +14595,8 @@ section {
 
 .vue-lists ul, .vue-lists ol {
     padding-left: 30px;
+}
+.userlist {
+    border: 2px solid black;
+    width: 90%;
 }
