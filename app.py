@@ -19,7 +19,7 @@ def login():
 def logoff():
     return render_template("login.html")
 
-@app.route("/admin/cadastro", methods=["GET", "POST"])
+@app.route("/admin/users", methods=["GET", "POST"])
 def user():
     if request.method == 'POST':
         return "adicionando usuario"
