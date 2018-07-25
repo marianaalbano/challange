@@ -10,7 +10,7 @@ class User():
         return userDB.query.get(id)
 
     def insertUser(self, info):
-        user = userDB
+        user = userDB()
         user.name = info['name']
         user.email = info['email']
         user.username = info['username']
