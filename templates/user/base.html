@@ -59,7 +59,7 @@
                                 <i class="fas fa-table"></i>Questionário</a>
                         </li>
                         <li>
-                            <a href="/logoff">
+                            <a href="/logout">
                                 <i class="far fa-check-square"></i>Sair</a>
                         </li>
                         
@@ -83,13 +83,15 @@
                                     
                                     
                                 </div>
+
+                                {% if current_user.is_authenticated %}
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             <img src="/static/images/icon/avatar-01.jpg" alt="user image" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="/static/#">Fabio Silva</a>
+                                            <a class="js-acc-btn" href="/static/#">{{ current_user.name }}</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -101,9 +103,9 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="/static/#">Fabio Silva</a>
+                                                        <a href="/static/#">{{ current_user.name }}</a>
                                                     </h5>
-                                                    <span class="email">fabio.candido@outlook.com</span>
+                                                    <span class="email">{{ current_user.email }}</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -113,12 +115,14 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="/logoff">
+                                                <a href="/logout">
                                                     <i class="zmdi zmdi-power"></i>Sair</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                {% endif %}
+
                             </div>
                         </div>
                     </div>

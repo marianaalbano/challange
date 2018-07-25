@@ -1,5 +1,7 @@
 from controllers.Users import User
 from model.Users import db, app
+from admin import admin_required
+
 
 from datetime import timedelta
 from flask import Flask, request, render_template, session,redirect, url_for
@@ -42,14 +44,12 @@ def login():
         password = request.form["password"]
         user = User()
         user = user.loginUser(username,password)
-        if user:
+        if user.admin == True:
             login_user(user, remember=False)
             return redirect(url_for('admin_home'))
-        # if request.form['username'] == "admin" and request.form["password"] == "admin":
-        #     session['name'] = "Administrator"
-        #     return render_template("admin/main.html")
-        # elif request.form['username'] == "user" and request.form["password"] == "user":
-        #     return render_template("user/base.html")
+        elif user.admin == False:
+            login_user(user, remember=False)
+            return redirect(url_for('user_home'))
     else:
         return render_template("login.html")
 
@@ -62,12 +62,20 @@ def logout():
 
 @app.route("/admin/main")
 @login_required
+@admin_required
 def admin_home():
     return render_template("admin/main.html")
 
 
+@app.route("/user/main")
+@login_required
+def user_home():
+    return render_template("user/base.html")
+
+
 @app.route("/admin/users", methods=["GET"])
 @login_required
+@admin_required
 def user():
     usuarios = User()
     usuarios = usuarios.findAll()
