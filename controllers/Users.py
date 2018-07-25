@@ -16,7 +16,7 @@ class User():
         user.username = info['username']
         user.telefone = info['telefone']
         user.passowrd = info['password']
-        user.is_admin = False
+        user.admin = False
         db.session.add(user)
         return db.session.commit()
 
