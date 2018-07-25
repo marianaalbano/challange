@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
+
 from datetime import datetime
 import os
 
@@ -37,7 +38,23 @@ class Users(db.Model):
     username = db.Column(db.String, nullable=False)
     telefone = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
-    is_admin = db.Column(db.String, nullable=False)
+    admin = db.Column(db.Boolean, nullable=False)
+
+
+    def is_active(self):
+        return self.is_active()
+
+    def get_id(self):
+        return self.id
+
+    def is_authenticated(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def is_admin(self):
+        return self.admin
 
 
 if __name__ == '__main__':

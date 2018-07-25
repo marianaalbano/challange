@@ -25,7 +25,7 @@ def upgrade():
     sa.Column('username', sa.String(), nullable=False),
     sa.Column('telefone', sa.String(), nullable=False),
     sa.Column('password', sa.String(), nullable=False),
-    sa.Column('is_admin', sa.String(), nullable=False),
+    sa.Column('admin', sa.Boolean(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
 
@@ -37,14 +37,14 @@ def upgrade():
                         'username':'admin',
                         'telefone':'1111111',
                         'password':'admin',
-                        'is_admin':'True'},
+                        'admin':True},
                         {'id': 2,
                         'name':'User',
                         'email': 'user@challange.com.br',
                         'username':'user',
                         'telefone':'1111111',
                         'password':'user',
-                        'is_admin':'False'}
+                        'admin':False}
 
                    ]
                    )
