@@ -10,7 +10,7 @@ class User():
         return userDB.query.get(id)
 
     def insertUser(self, info):
-        user = userDB
+        user = userDB()
         user.name = info['name']
         user.email = info['email']
         user.username = info['username']
@@ -25,3 +25,17 @@ class User():
         user = userDB.query.get(id)
         db.session.delete(user)
         return db.session.commit()
+
+    def loginUser(self, username, password):
+        try:
+            usuario = db.session.query(userDB).filter(userDB.username == username).first()
+            print (username, usuario.username)
+            if username == usuario.username and password == usuario.password:
+                print ("if ok")
+                print(usuario)
+                return usuario
+            else:
+                return None
+        except Exception as e:
+            print e
+            return None

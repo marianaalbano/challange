@@ -1,19 +1,56 @@
-from model.Users import db, app
 from controllers.Users import User
-from flask import Flask, request, render_template
+from model.Users import db, app
+
+from datetime import timedelta
+from flask import Flask, request, render_template, session,redirect, url_for
+from flask_login import LoginManager, login_required, login_user, logout_user
+
 
 
 # app = Flask(__name__)
 
+app.secret_key = "challange"
+
+login_manager = LoginManager()
+
+
+app.permanent_session_lifetime = timedelta(seconds=3600)
+
+login_manager = LoginManager(app)
+login_manager.init_app(app)
+
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    return redirect(url_for("login"))
+
+@login_manager.user_loader
+def load_user(id):
+    user = User()
+    return user.findOne(id)
+
+
+
 @app.route("/login", methods=["GET","POST"])
 def login():
     if request.method == 'POST':
-        if request.form['username'] == "admin" and request.form["password"] == "admin":
+        username = request.form["username"]
+        password = request.form["password"]
+        user = User()
+        user = user.loginUser(username,password)
+        if user:
+            login_user(user, remember=False)
             return render_template("admin/main.html")
-        elif request.form['username'] == "user" and request.form["password"] == "user":
-            return render_template("user/base.html")
+        # if request.form['username'] == "admin" and request.form["password"] == "admin":
+        #     session['name'] = "Administrator"
+        #     return render_template("admin/main.html")
+        # elif request.form['username'] == "user" and request.form["password"] == "user":
+        #     return render_template("user/base.html")
     else:
         return render_template("login.html")
+
+
+
 
 @app.route("/logoff", methods=["GET"])
 def logoff():
