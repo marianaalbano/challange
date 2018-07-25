@@ -30,6 +30,10 @@ def load_user(id):
     return user.findOne(id)
 
 
+@app.route('/')
+def home():
+    return redirect(url_for('login'))
+
 
 @app.route("/login", methods=["GET","POST"])
 def login():
@@ -40,7 +44,7 @@ def login():
         user = user.loginUser(username,password)
         if user:
             login_user(user, remember=False)
-            return render_template("admin/main.html")
+            return redirect(url_for('admin_home'))
         # if request.form['username'] == "admin" and request.form["password"] == "admin":
         #     session['name'] = "Administrator"
         #     return render_template("admin/main.html")
@@ -50,20 +54,27 @@ def login():
         return render_template("login.html")
 
 
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 
-@app.route("/logoff", methods=["GET"])
-def logoff():
-    return render_template("login.html")
+@app.route("/admin/main")
+@login_required
+def admin_home():
+    return render_template("admin/main.html")
 
 
 @app.route("/admin/users", methods=["GET"])
+@login_required
 def user():
     usuarios = User()
     usuarios = usuarios.findAll()
     return render_template("admin/userList.html", usuarios=usuarios)
 
 @app.route("/admin/user/new", methods=["GET", "POST"])
+@login_required
 def new_user():
     if request.method == 'POST':
         usuario = User()
@@ -73,6 +84,7 @@ def new_user():
         return render_template("admin/userCadastro.html")
 
 @app.route("/admin/user/<id>", methods=["GET", "POST"])
+@login_required
 def edit_user(id):
     if request.method == 'POST':
         return "Editando usuario" 
@@ -83,6 +95,7 @@ def edit_user(id):
 
 
 @app.route("/admin/user/<id>/remove")
+@login_required
 def delete_user(id):
     usuario = User()
     usuario = usuario.removeUser(id)
