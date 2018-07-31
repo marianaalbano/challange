@@ -40,16 +40,19 @@ def home():
 @app.route("/login", methods=["GET","POST"])
 def login():
     if request.method == 'POST':
-        username = request.form["username"]
-        password = request.form["password"]
-        user = User()
-        user = user.loginUser(username,password)
-        if user.admin == True:
-            login_user(user, remember=False)
-            return redirect(url_for('admin_home'))
-        elif user.admin == False:
-            login_user(user, remember=False)
-            return redirect(url_for('user_home'))
+        try:
+            username = request.form["username"]
+            password = request.form["password"]
+            user = User()
+            user = user.loginUser(username,password)
+            if user.admin == True:
+                login_user(user, remember=False)
+                return redirect(url_for('admin_home'))
+            elif user.admin == False:
+                login_user(user, remember=False)
+                return redirect(url_for('user_home'))
+        except Exception as e:
+            return render_template("login.html")
     else:
         return render_template("login.html")
 
@@ -87,20 +90,19 @@ def new_user():
     if request.method == 'POST':
         usuario = User()
         usuario = usuario.insertUser(request.form)
-        return render_template("admin/userCadastro.html")
+        return redirect(url_for('user'))
     else:
         return render_template("admin/userCadastro.html")
 
 @app.route("/admin/user/<id>", methods=["GET", "POST"])
 @login_required
 def edit_user(id):
+    usuario = User()
     if request.method == 'POST':
-        return "Editando usuario" 
+        usuario = usuario.updateUser(id,request.form)
+        return redirect(url_for('user'))
     else:
-        print ("Estou aqui")
-        usuario = User()
         usuario = usuario.findOne(id)
-        print (usuario.name)
         return render_template("admin/userEdit.html", usuario=usuario)
 
 
@@ -109,7 +111,7 @@ def edit_user(id):
 def delete_user(id):
     usuario = User()
     usuario = usuario.removeUser(id)
-    return "Usuario Deletado com sucesso"
+    return redirect(url_for('user'))
 
 
 if __name__ == "__main__":
