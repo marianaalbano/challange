@@ -97,9 +97,11 @@ def edit_user(id):
     if request.method == 'POST':
         return "Editando usuario" 
     else:
+        print ("Estou aqui")
         usuario = User()
         usuario = usuario.findOne(id)
-        return render_template("admin/userList.html", usuario=usuario)
+        print (usuario.name)
+        return render_template("admin/userEdit.html", usuario=usuario)
 
 
 @app.route("/admin/user/<id>/remove")
