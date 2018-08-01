@@ -1,6 +1,7 @@
 from controllers.Users import User
 from model.Users import db, app
-from admin import admin_required
+from routes.admin_required import admin_required
+from routes.admin import admin
 
 
 from datetime import timedelta
@@ -11,7 +12,12 @@ from flask_login import LoginManager, login_required, login_user, logout_user
 
 # app = Flask(__name__)
 
+app.register_blueprint(admin)
+
+
 app.secret_key = "challange"
+
+
 
 login_manager = LoginManager()
 
@@ -47,7 +53,7 @@ def login():
             user = user.loginUser(username,password)
             if user.admin == True:
                 login_user(user, remember=False)
-                return redirect(url_for('admin_home'))
+                return redirect('/admin/main')
             elif user.admin == False:
                 login_user(user, remember=False)
                 return redirect(url_for('user_home'))
@@ -63,11 +69,7 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route("/admin/main")
-@login_required
-@admin_required
-def admin_home():
-    return render_template("admin/main.html")
+
 
 
 @app.route("/user/main")
