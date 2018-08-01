@@ -2,6 +2,7 @@ from controllers.Users import User
 from model.Users import db, app
 from routes.admin_required import admin_required
 from routes.admin import admin
+from routes.question import question
 
 
 from datetime import timedelta
@@ -13,6 +14,7 @@ from flask_login import LoginManager, login_required, login_user, logout_user
 # app = Flask(__name__)
 
 app.register_blueprint(admin)
+app.register_blueprint(question)
 
 app.secret_key = "challange"
 app.permanent_session_lifetime = timedelta(seconds=3600)
