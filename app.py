@@ -14,16 +14,10 @@ from flask_login import LoginManager, login_required, login_user, logout_user
 
 app.register_blueprint(admin)
 
-
 app.secret_key = "challange"
-
-
-
-login_manager = LoginManager()
-
-
 app.permanent_session_lifetime = timedelta(seconds=3600)
 
+login_manager = LoginManager()
 login_manager = LoginManager(app)
 login_manager.init_app(app)
 
@@ -56,7 +50,7 @@ def login():
                 return redirect('/admin/main')
             elif user.admin == False:
                 login_user(user, remember=False)
-                return redirect(url_for('user_home'))
+                return redirect('/user/main')
         except Exception as e:
             return render_template("login.html")
     else:
@@ -69,51 +63,10 @@ def logout():
     return redirect(url_for('login'))
 
 
-
-
-
 @app.route("/user/main")
 @login_required
 def user_home():
     return render_template("user/base.html")
-
-
-@app.route("/admin/users", methods=["GET"])
-@login_required
-@admin_required
-def user():
-    usuarios = User()
-    usuarios = usuarios.findAll()
-    return render_template("admin/userList.html", usuarios=usuarios)
-
-@app.route("/admin/user/new", methods=["GET", "POST"])
-@login_required
-def new_user():
-    if request.method == 'POST':
-        usuario = User()
-        usuario = usuario.insertUser(request.form)
-        return redirect(url_for('user'))
-    else:
-        return render_template("admin/userCadastro.html")
-
-@app.route("/admin/user/<id>", methods=["GET", "POST"])
-@login_required
-def edit_user(id):
-    usuario = User()
-    if request.method == 'POST':
-        usuario = usuario.updateUser(id,request.form)
-        return redirect(url_for('user'))
-    else:
-        usuario = usuario.findOne(id)
-        return render_template("admin/userEdit.html", usuario=usuario)
-
-
-@app.route("/admin/user/<id>/remove")
-@login_required
-def delete_user(id):
-    usuario = User()
-    usuario = usuario.removeUser(id)
-    return redirect(url_for('user'))
 
 
 if __name__ == "__main__":
