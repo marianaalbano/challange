@@ -10,12 +10,12 @@ quiz = Blueprint('quiz', __name__)
 @quiz.route("/admin/quiz", methods=["GET"])
 @login_required
 def list_quiz():
-    return return_template("admin/quiz/quizList.html")
+    return render_template("admin/quiz/quizList.html")
 
-@quiz.route("/admin/quiz/new", methods=["POST"])
+@quiz.route("/admin/quiz/new", methods=["GET"])
 @login_required
 def new_quiz():
-    return "add new quiz"
+    return render_template("admin/quiz/quizNew.html")
 
 
 @quiz.route("/admin/quiz/id/edit", methods=["POST"])
@@ -23,9 +23,9 @@ def new_quiz():
 def edit_quiz(id):
     return "edit quiz"
 
-@quiz.route("/admin/quiz/id/remove)
+@quiz.route("/admin/quiz/id/remove")
 @login_required
-def new_quiz(id):
+def remove_quiz(id):
     return " delete quiz"
 
 

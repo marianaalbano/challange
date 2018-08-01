@@ -1,0 +1,87 @@
+{% include "admin/base.html" %}
+
+{% block css %}
+
+
+<!-- Principal CSS-->
+    <link href="/static/css/theme.css" rel="stylesheet" media="all">
+
+    <!-- Fontfaces CSS-->
+    <link href="/static/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/static/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    
+
+    <!-- Vendor CSS-->
+    <link href="/static/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+{% endblock %}
+{% block content %}
+
+<div class="page-container">
+    <div class="main-content" style="background-color: white">
+            
+                <div style="width: 90%; text-align: center"><h3>Cadastro de questionário </h3></div><br><br>
+        
+                    
+                   <div style="margin-left: 80px"> 
+                    
+                        <form style=" width: 70%; text-align: left" method=post action="/admin/user/new">
+                          <div class="form-group row">
+                            <label for="inputNome" class="col-sm-2 col-form-label">Título</label>
+                            <div class="col-sm-10">
+                              <input type="nome" class="form-control" id="inputNome" name="name">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Categoria</label>
+                            <div class="col-sm-10">
+                              <select class="custom-select" id="inputGroupSelect01">
+                                    <option value=" catWindows" selected>Windows</option>
+                                    <option value="catLinux">Linux</option>
+                                    <option value="catPython">Python</option>
+                                   
+                                </select>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputTelefone" class="col-sm-2 col-form-label">Dificuldade</label>
+                            <div class="col-sm-10">
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option selected>Junior</option>
+                                    <option value="1">Pleno</option>
+                                    <option value="2">Senior</option>
+                                   
+                                </select>
+                            </div>
+                          </div> 
+                          <div class="form-group row">
+                            <label for="inputNome" class="col-sm-2 col-form-label">Tempo</label>
+                            <div class="col-sm-10">
+                              <input type="nome" class="form-control" id="inputNome" name="time" placeholder="Duração em segundos">
+                            </div>
+                          </div>
+                          
+                         
+                          
+                          <div class="form-group row">
+                            <div class="col-sm-10">
+                              <button type="submit" class="btn btn-primary">Criar</button>
+                              <button type="reset" class="btn btn-primary">Apagar</button>
+                            </div>
+                          </div>
+                        </form>
+        </div>
+                                
+    </div>
+</div>
+{% endblock %}

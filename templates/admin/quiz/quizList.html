@@ -28,7 +28,7 @@
 {% block content %}
 
 <div class="page-container">
-    <div class="main-content">
+    <div class="main-content" style="background-color: white">
             
                 <div style="width: 90%; text-align: center">
                     <h3>
@@ -37,21 +37,21 @@
                     </h3>
                 </div>
 
-                    &nbsp;&nbsp;&nbsp;<a href="/admin/user/new"><button type="button" class="btn btn-primary btn-sm">Novo Questionário</button></a><br><br>
+                    &nbsp;&nbsp;&nbsp;<a href="/admin/quiz/new"><button type="button" class="btn btn-primary btn-sm">Novo Questionário</button></a><br><br>
                     
                 <div style="margin-left: 20px; margin-right: 20px">    
                     <table class="table">
                      <thead class="thead-light">
                         <tr>
                             
-                            <th scope="col">Nome</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Usuário</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">Opções</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Dificuldade</th>
+                            <th scope="col">Tempo</th>
+                            <th scope="col">Qtde Perguntas</th>
                         </tr>
                     </thead>
-                        {% for usuario in usuarios %}
+                        {% for quiz in quizzes %}
                         
                             <tr>
                                 
