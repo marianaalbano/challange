@@ -29,16 +29,23 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 
+
+quiz_users = db.Table('quiz_users',
+    db.Column('users_id', db.Integer, db.ForeignKey('Users.id'), primary_key=True),
+    db.Column('quiz_id', db.Integer, db.ForeignKey('Quiz.id'), primary_key=True)
+)
+
 class Users(db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    email = db.Column(db.String, nullable=False)
-    username = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False, unique=True)
+    username = db.Column(db.String, nullable=False, unique=True)
     telefone = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
     admin = db.Column(db.Boolean, nullable=False)
+    quiz_users = db.relationship('Quiz', secondary=quiz_users, lazy='subquery', backref=db.backref('users', lazy=True))
 
 
     def is_active(self):
@@ -55,6 +62,41 @@ class Users(db.Model):
 
     def is_admin(self):
         return self.admin
+
+    
+class Quiz(db.Model):
+    __tablename__ = 'quiz'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    response_time = db.Column(db.String, nullable=False)
+    category = db.Column(db.String, nullable=False)
+    dificulty = db.Column(db.String, nullable=False)
+    questions_multiple = db.relationship('QuestionsMultiple', backref='quiz', lazy=True)
+    questions_disserty = db.relationship('QuestionsDisserty', backref='quiz', lazy=True)
+
+
+class QuestionsMultiple(db.Model):
+    __tablename__ = 'questions_multiple'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    question = db.Column(db.String, nullable=False)
+    option_1 = db.Column(db.String, nullable=False)
+    option_2 = db.Column(db.String, nullable=False)
+    option_3 = db.Column(db.String, nullable=False)
+    option_4 = db.Column(db.String, nullable=False)
+
+    right_question = db.Column(db.String, nullable=False)
+    quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.id'), nullable=False)
+
+class QuestionsDisserty(db.Model):
+    __tablename__ = 'questions'
+
+    id = db.Column(db.Integer, primary_key=True)
+    questions = db.Column(db.String, nullable=False)
+    right_question = db.Column(db.String, nullable=False)
+    quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.id'), nullable=False)
 
 
 if __name__ == '__main__':
