@@ -2,11 +2,8 @@ from controllers.Users import User
 from model.Users import db, app
 from routes.admin_required import admin_required
 from routes.admin import admin
-<<<<<<< HEAD
 from routes.quiz import quiz
-=======
 from routes.question import question
->>>>>>> ca7e7298010f040114594be842a8764a9ac1f7a8
 
 
 from datetime import timedelta

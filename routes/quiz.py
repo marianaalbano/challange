@@ -28,14 +28,6 @@ def edit_quiz(id):
 
 @quiz.route("/admin/quiz/id/remove")
 @login_required
-<<<<<<< HEAD
-def remove_quiz(id):
-=======
 @admin_required
-def new_quiz(id):
->>>>>>> ca7e7298010f040114594be842a8764a9ac1f7a8
-    return " delete quiz"
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
+def remove_quiz(id):
+    return "delete quiz"
