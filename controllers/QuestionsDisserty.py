@@ -1,7 +1,7 @@
 from model.Users import db
 from model.Users import QuestionsDisserty as Disserty
 
-from Quiz import Quiz
+from controllers.Quiz import Quiz
 
 class QuestionsDisserty():
 
