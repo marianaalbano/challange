@@ -18,11 +18,8 @@ from flask_login import LoginManager, login_required, login_user, logout_user
 # app = Flask(__name__)
 
 app.register_blueprint(admin)
-<<<<<<< HEAD
 app.register_blueprint(quiz)
-=======
 app.register_blueprint(question)
->>>>>>> ca7e7298010f040114594be842a8764a9ac1f7a8
 
 app.secret_key = "challange"
 app.permanent_session_lifetime = timedelta(seconds=3600)
