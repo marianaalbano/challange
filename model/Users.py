@@ -31,8 +31,8 @@ manager.add_command('db', MigrateCommand)
 
 
 quiz_users = db.Table('quiz_users',
-    db.Column('users_id', db.Integer, db.ForeignKey('Users.id'), primary_key=True),
-    db.Column('quiz_id', db.Integer, db.ForeignKey('Quiz.id'), primary_key=True)
+    db.Column('users_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('quiz_id', db.Integer, db.ForeignKey('quiz.id'), primary_key=True)
 )
 
 class Users(db.Model):
@@ -63,7 +63,7 @@ class Users(db.Model):
     def is_admin(self):
         return self.admin
 
-    
+
 class Quiz(db.Model):
     __tablename__ = 'quiz'
 
