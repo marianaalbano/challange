@@ -91,7 +91,7 @@ class QuestionsMultiple(db.Model):
     quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.id'), nullable=False)
 
 class QuestionsDisserty(db.Model):
-    __tablename__ = 'questions'
+    __tablename__ = 'questions_disserty'
 
     id = db.Column(db.Integer, primary_key=True)
     questions = db.Column(db.String, nullable=False)
