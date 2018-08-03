@@ -108,8 +108,8 @@ venv.bak/
 .DS_Store/
 
 # project
-./controllers/*.py
-./model/*.pyc
-./model/*.db
-./routes/*.pyc
+controllers/*.pyc
+model/*.pyc
+model/*.db
+routes/*.pyc
 *.db
