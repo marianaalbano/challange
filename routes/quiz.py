@@ -20,13 +20,13 @@ def new_quiz():
     return render_template("admin/quiz/quizNew.html")
 
 
-@quiz.route("/admin/quiz/id/edit", methods=["POST"])
+@quiz.route("/admin/quiz/<id>/edit", methods=["POST"])
 @login_required
 @admin_required
 def edit_quiz(id):
     return "edit quiz"
 
-@quiz.route("/admin/quiz/id/remove")
+@quiz.route("/admin/quiz/<id>/remove")
 @login_required
 @admin_required
 def remove_quiz(id):
