@@ -1,13 +1,18 @@
 from model.Users import db
 from model.Users import Quiz as quizDB
+from controllers.QuestionsDisserty import QuestionsDisserty 
+from controllers.QuestionsMultiple import QuestionsMultiple
 
 class Quiz():
     
     def findAll(self):
         return quizDB.query.all()
 
-    def findOne(self,id):
+    def findOne(self, id):
         return quizDB.query.get(id)
+
+    def findLastOne(self):
+        return db.session.query(quizDB).order_by(quizDB.id.desc()).first()
 
     def insertQuiz(self, info):
         quiz = quizDB()
@@ -32,3 +37,4 @@ class Quiz():
         quiz = quizDB.query.get(id)
         db.session.delete(quiz)
         return db.session.commit()
+

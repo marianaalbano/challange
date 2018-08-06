@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, request
 from admin_required import admin_required
+from controllers.Quiz import Quiz
 
 
 from flask_login import LoginManager, login_required, login_user, logout_user
@@ -13,21 +14,39 @@ quiz = Blueprint('quiz', __name__)
 def list_quiz():
     return render_template("admin/quiz/quizList.html")
 
-@quiz.route("/admin/quiz/new", methods=["GET"])
+@quiz.route("/admin/quiz/new", methods=["GET", "POST"])
 @login_required
 @admin_required
 def new_quiz():
-    return render_template("admin/quiz/quizNew.html")
+    if request.method == 'POST':
+        quiz = Quiz()
+        quiz = quiz.insertQuiz(request.form)
+
+        id = quiz.findLastOne()
+
+        return redirect("admin/quiz/%s/questions" %id)
+
+    else:
+
+        return render_template("admin/quiz/quizNew.html")
 
 
-@quiz.route("/admin/quiz/<id>/edit", methods=["POST"])
+@quiz.route("/admin/quiz/<id>/edit", methods=["GET", "POST"])
 @login_required
 @admin_required
 def edit_quiz(id):
-    return "edit quiz"
+    quiz = Quiz()
+    if request.method == 'POST':
+        quiz.updateQuiz(id,request.form)
+        return redirect("admin/quiz/quizList.html")
+    else:
+        quiz = quiz.findOne(id)
+        return render_template("admin/quiz/quizEdit.html", quiz=quiz)
 
 @quiz.route("/admin/quiz/<id>/remove")
 @login_required
 @admin_required
 def remove_quiz(id):
-    return "delete quiz"
+    quiz = Quiz()
+    quiz = quiz.removeQuiz(id)
+    return redirect("admin/quiz/quizList.html")

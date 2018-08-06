@@ -11,9 +11,12 @@ class QuestionsDisserty():
     def findOne(self,id):
         return Disserty.query.get(id)
 
-    def insertQD(self, info):
+    def findByQuiz(self,id):
+        return Disserty.query.filter_by(id_quiz=id).all()
+
+    def insertQD(self, id, info):
         quiz = Quiz()
-        quiz_id = quiz.findOne(info['quiz_id'])
+        quiz_id = quiz.findOne(id)
         qd = Disserty()
         qd.questions = info['questions']
         qd.right_question = info['right_question']

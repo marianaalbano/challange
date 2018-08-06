@@ -11,9 +11,12 @@ class QuestionsMultiple():
     def findOne(self,id):
         return Multiple.query.get(id)
 
-    def insertQM(self, info):
+    def findByQuiz(self,id):
+        return Multiple.query.filter_by(id_quiz=id).all()
+
+    def insertQM(self, id, info):
         quiz = Quiz()
-        quiz_id = quiz.findOne(info['quiz_id'])
+        quiz_id = quiz.findOne(id)
         qm = Multiple()
         qm.option_1 = info['option_1']
         qm.option_2 = info['option_2']
