@@ -1,10 +1,9 @@
 from model.Users import db
 from model.Users import QuestionsDisserty as Disserty
 
-from controllers.Quiz import Quiz
+from controllers.QuizController import QuizController
 
 class QuestionsDisserty():
-
     def findAll(self):
         return Disserty.query.all()
 
@@ -15,7 +14,7 @@ class QuestionsDisserty():
         return Disserty.query.filter_by(id_quiz=id).all()
 
     def insertQD(self, id, info):
-        quiz = Quiz()
+        quiz = QuizController()
         quiz_id = quiz.findOne(id)
         qd = Disserty()
         qd.questions = info['questions']

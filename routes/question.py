@@ -21,7 +21,7 @@ def list_question(id):
 
     return render_template("admin/quiz/questionsList.html", q_multiple=q_multiple, q_disserty=q_disserty)
 
-@question.route("/admin/quiz/<id>/questions/new", methods=["GET". "POST"])
+@question.route("/admin/quiz/<id>/questions/new", methods=["GET", "POST"])
 @login_required
 @admin_required
 def add_question(id):
@@ -42,7 +42,7 @@ def add_question(id):
 @question.route("/admin/quiz/<id>/questions_multiple/<id_question>/edit", methods=["GET", "POST"])
 @login_required
 @admin_required
-def edit_question(id, id_question):
+def edit_multiple(id, id_question):
     q_multiple = QuestionsMultiple()
 
     if request.method == 'POST':
@@ -57,7 +57,7 @@ def edit_question(id, id_question):
 @question.route("/admin/quiz/<id>/questions_disserty/<id_question>/edit", methods=["GET", "POST"])
 @login_required
 @admin_required
-def edit_question(id, id_question):
+def edit_disserty(id, id_question):
     q_disserty = QuestionsDisserty()
 
     if request.method == 'POST':

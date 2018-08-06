@@ -1,9 +1,7 @@
 from model.Users import db
 from model.Users import Quiz as quizDB
-from controllers.QuestionsDisserty import QuestionsDisserty 
-from controllers.QuestionsMultiple import QuestionsMultiple
 
-class Quiz():
+class QuizController():
     
     def findAll(self):
         return quizDB.query.all()

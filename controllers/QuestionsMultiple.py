@@ -1,7 +1,7 @@
 from model.Users import db
 from model.Users import QuestionsMultiple as Multiple
 
-from controllers.Quiz import Quiz
+from QuizController import QuizController
 
 class QuestionsMultiple():
 
@@ -15,7 +15,7 @@ class QuestionsMultiple():
         return Multiple.query.filter_by(id_quiz=id).all()
 
     def insertQM(self, id, info):
-        quiz = Quiz()
+        quiz = QuizController()
         quiz_id = quiz.findOne(id)
         qm = Multiple()
         qm.option_1 = info['option_1']
