@@ -10,13 +10,11 @@ def admin_required(fn):
     @wraps(fn)
     def decorated_view(*args, **kwargs):
         if not current_user.is_authenticated():
-            print ("aqui")
             return current_app.login_manager.unauthorized()
         try:
             if current_user.is_admin():
                 return fn(*args, **kwargs)
         except AttributeError:
-            print("aqui")
             pass
         user_unauthorized.send(current_app._get_current_object())
         flash("Admin login required for this page","error")

@@ -27,6 +27,7 @@ def user():
 
 @admin.route("/admin/user/new", methods=["GET", "POST"])
 @login_required
+@admin_required
 def new_user():
     if request.method == 'POST':
         usuario = User()
@@ -38,6 +39,7 @@ def new_user():
 
 @admin.route("/admin/user/<id>", methods=["GET", "POST"])
 @login_required
+@admin_required
 def edit_user(id):
     usuario = User()
     if request.method == 'POST':
@@ -50,6 +52,7 @@ def edit_user(id):
 
 @admin.route("/admin/user/<id>/remove")
 @login_required
+@admin_required
 def delete_user(id):
     usuario = User()
     usuario = usuario.removeUser(id)

@@ -21,10 +21,8 @@ def list_quiz():
 @admin_required
 def new_quiz():
     if request.method == 'POST':
-        print("aqui")
         quiz = QuizController()
         quiz = quiz.insertQuiz(request.form)
-
         id = quiz.findLastOne()
 
         return redirect("admin/quiz/%s/questions" %id)
