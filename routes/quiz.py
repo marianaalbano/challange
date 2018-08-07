@@ -21,11 +21,16 @@ def list_quiz():
 @admin_required
 def new_quiz():
     if request.method == 'POST':
+        print ("aqui")
         quiz = QuizController()
+        print("aqui2")
         quiz = quiz.insertQuiz(request.form)
-        id = quiz.findLastOne()
+        print("aqui3")
+        #teste = quiz.findLastOne()
+        #print(teste)
+        id = 3
 
-        return redirect("admin/quiz/%s/questions" %id)
+        return redirect("admin/quiz/%s/edit" %id)
     else:
         return render_template("admin/quiz/quizNew.html")
 

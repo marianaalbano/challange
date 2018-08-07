@@ -12,7 +12,7 @@ class QuestionsMultiple():
         return Multiple.query.get(id)
 
     def findByQuiz(self,id):
-        return Multiple.query.filter_by(id_quiz=id).all()
+        return Multiple.query.filter_by(quiz_id=id).all()
 
     def insertQM(self, id, info):
         quiz = QuizController()
