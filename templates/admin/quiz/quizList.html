@@ -48,7 +48,7 @@
                             <th scope="col">Categoria</th>
                             <th scope="col">Dificuldade</th>
                             <th scope="col">Tempo</th>
-                            <th scope="col">Qtde Perguntas</th>
+                            <th scope="col">Opções</th>
                         </tr>
                     </thead>
                         {% for quiz in quizzes %}
@@ -56,10 +56,10 @@
                             <tr>
                                 
                                 <th> {{ quiz.name }} </th>
-                                <th> {{ usuario.email }} </th>
-                                <th> {{ usuario.username }} </th>
-                                <th> {{ usuario.telefone }} </th> 
-                                <th scope="col"><a href="/admin/user/{{ usuario.id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;<a href="/admin/user/{{ usuario.id }}/remove"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
+                                <th> {{ quiz.category }} </th>
+                                <th> {{ quiz.dificulty }} </th>
+                                <th> {{ quiz.response_time }} </th> 
+                                <th scope="col"><a href="/admin/quiz/{{ quiz.id }}/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;<a href="/admin/quiz/{{ quiz.id }}/remove"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
                             </tr>
                         {% endfor %}
                 

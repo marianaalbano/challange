@@ -21,6 +21,7 @@ def list_quiz():
 @admin_required
 def new_quiz():
     if request.method == 'POST':
+        print("aqui")
         quiz = QuizController()
         quiz = quiz.insertQuiz(request.form)
 
@@ -49,4 +50,4 @@ def edit_quiz(id):
 def remove_quiz(id):
     quiz = QuizController()
     quiz = quiz.removeQuiz(id)
-    return redirect("admin/quiz/quizList.html")
+    return redirect("admin/quiz")

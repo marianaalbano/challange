@@ -13,10 +13,11 @@ class QuizController():
         return db.session.query(quizDB).order_by(quizDB.id.desc()).first()
 
     def insertQuiz(self, info):
+        print(info)
         quiz = quizDB()
         quiz.name = info['name']
-        quiz.responsetime = info['response_time']
-        quiz.category = info['category']
+        quiz.response_time = info['time']
+        quiz.category = info['type']
         quiz.dificulty = info['dificulty']
         db.session.add(quiz)
         return db.session.commit()

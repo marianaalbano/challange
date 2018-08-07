@@ -72,8 +72,8 @@ class Quiz(db.Model):
     response_time = db.Column(db.String, nullable=False)
     category = db.Column(db.String, nullable=False)
     dificulty = db.Column(db.String, nullable=False)
-    questions_multiple = db.relationship('QuestionsMultiple', backref='quiz', lazy=True)
-    questions_disserty = db.relationship('QuestionsDisserty', backref='quiz', lazy=True)
+    questions_multiple = db.relationship('QuestionsMultiple', backref='quiz', lazy=True, cascade="all, delete-orphan")
+    questions_disserty = db.relationship('QuestionsDisserty', backref='quiz', lazy=True, cascade="all, delete-orphan")
 
 
 class QuestionsMultiple(db.Model):
