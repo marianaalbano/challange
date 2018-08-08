@@ -10,13 +10,19 @@ class User():
         return userDB.query.get(id)
 
     def insertUser(self, info):
+        print(info)
         user = userDB()
         user.name = info['name']
         user.email = info['email']
         user.username = info['username']
         user.telefone = info['telefone']
         user.password = info['password']
-        user.admin = False
+        user.admin = info["gridRadios"]
+        if user.admin == "option1":
+            user.admin = False
+        else:
+            user.admin = True
+
         db.session.add(user)
         return db.session.commit()
 
