@@ -24,8 +24,6 @@ def new_quiz():
         quiz = QuizController()
         quiz.insertQuiz(request.form)
         id_quiz = quiz.findLastOne()
-        id_quiz = id_quiz.id
-        print(id_quiz.id)
 
         return redirect("admin/quiz/%s/edit" %id_quiz.id)
     else:
