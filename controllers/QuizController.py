@@ -11,7 +11,7 @@ class QuizController():
 
     def findLastOne(self):
         print("aqui find")
-        return db.session.query(quizDB).order_by(quizDB.id.desc()).all()
+        return db.session.query(quizDB).order_by(quizDB.id.desc()).first()
 
     def insertQuiz(self, info):
         print(info)
