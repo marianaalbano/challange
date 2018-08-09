@@ -14,7 +14,17 @@ admin = Blueprint('admin', __name__)
 def admin_home():
     return render_template("admin/main.html")
 
-
+@admin.route("/admin/<id>", methods=['GET', 'POST'])
+@login_required
+@admin_required
+def change_profile_admin(id):
+    usuario = User()
+    if request.method == 'POST':
+        usuario.updateUser(id, request.form)
+        return render_template("editadmin")
+    else:
+        usuario = usuario.findOne(id)
+        return render_template('editadmin', usuario=usuario)
 
 @admin.route("/admin/users", methods=["GET"])
 @login_required
