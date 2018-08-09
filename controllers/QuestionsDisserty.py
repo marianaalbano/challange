@@ -11,7 +11,7 @@ class QuestionsDisserty():
         return Disserty.query.get(id)
 
     def findByQuiz(self,id):
-        return Disserty.query.filter_by(id_quiz=id).all()
+        return Disserty.query.filter_by(quiz_id=id).all()
 
     def insertQD(self, id, info):
         quiz = QuizController()

@@ -30,26 +30,25 @@
 <div class="page-container">
     <div class="main-content">
             
-                <div style="width: 99%; margin-left: auto; margin-right: auto; margin-top: -2%;  text-align: center" class="shadow p-3 mb-5 bg-white rounded"><h3>Cadastro de questionário </h3><br><br>
+                <div style="width: 97%; margin-left: auto; margin-right: auto; text-align: center" class="shadow p-3 mb-5 bg-white rounded"><h3>Cadastro de questionário </h3><br><br>
         
                     
-                   <div> 
+                   <div style="margin-left: 80px"> 
                     
                         <form style=" width: 70%; text-align: left" method=post action="/admin/quiz/new">
                           <div class="form-group row">
                             <label for="inputNome" class="col-sm-2 col-form-label">Título</label>
                             <div class="col-sm-10">
-                              <input type="nome" class="form-control" id="inputNome" name="name" value="{{ quiz.name }}">
+                              <input type="nome" class="form-control" id="inputNome" name="name">
                             </div>
                           </div>
                           <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Categoria</label>
                             <div class="col-sm-10">
                               <select class="custom-select" id="inputGroupSelect01" name="type">
-                                  <option value="Junior" {% if quiz.category == 'Windows' %} selected {% endif %}>Windows</option> 
-                                  <option value="Pleno" {% if quiz.category == 'Linux' %} selected {% endif %}>Linux</option> 
-                                  <option value="Senior" {% if quiz.category == 'Python' %} selected {% endif %}>Python</option> 
-                                  
+                                  <option value="Windows" selected>Windows</option>
+                                  <option value="Linux">Linux</option>
+                                  <option value="Python">Python</option>
                               </select>
                             </div>
                           </div>
@@ -57,10 +56,9 @@
                             <label for="inputTelefone" class="col-sm-2 col-form-label">Dificuldade</label>
                             <div class="col-sm-10">
                                 <select class="custom-select" id="inputGroupSelect01" name="dificulty">
-                                    <option value="Junior" {% if quiz.dificulty == 'Junior' %} selected {% endif %}>Junior</option> 
-                                    <option value="Pleno" {% if quiz.dificulty == 'Pleno' %} selected {% endif %}>Pleno</option> 
-                                    <option value="Senior" {% if quiz.dificulty == 'Senior' %} selected {% endif %}>Senior</option> 
-                                  
+                                    <option value="Junior" selected>Junior</option>
+                                    <option value="Pleno">Pleno</option>
+                                    <option value="Senior">Senior</option>
                                    
                                 </select>
                             </div>
@@ -68,12 +66,12 @@
                           <div class="form-group row">
                             <label for="inputNome" class="col-sm-2 col-form-label">Tempo</label>
                             <div class="col-sm-10">
-                              <input type="nome" class="form-control" id="inputNome" name="time" value="{{ quiz.response_time }}">
+                              <input type="nome" class="form-control" id="inputNome" name="time" placeholder="Duração em segundos">
                             </div>
                           </div>
                           
                          
-                          <br><br>
+                          
                           <div class="form-group row">
                             <div class="col-sm-10">
                               <button type="submit" class="btn btn-primary">Criar</button>
@@ -82,8 +80,8 @@
                           </div>
                         </form>
                     </div>
-                </div>
                                 
+                </div>
     </div>
 </div>
 {% endblock %}

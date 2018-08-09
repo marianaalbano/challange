@@ -14,7 +14,17 @@ admin = Blueprint('admin', __name__)
 def admin_home():
     return render_template("admin/main.html")
 
-
+@admin.route("/admin/<id>", methods=['GET', 'POST'])
+@login_required
+@admin_required
+def change_profile_admin(id):
+    usuario = User()
+    if request.method == 'POST':
+        usuario.updateUser(id, request.form)
+        return render_template("editadmin")
+    else:
+        usuario = usuario.findOne(id)
+        return render_template('editadmin', usuario=usuario)
 
 @admin.route("/admin/users", methods=["GET"])
 @login_required
@@ -27,6 +37,7 @@ def user():
 
 @admin.route("/admin/user/new", methods=["GET", "POST"])
 @login_required
+@admin_required
 def new_user():
     if request.method == 'POST':
         usuario = User()
@@ -38,6 +49,7 @@ def new_user():
 
 @admin.route("/admin/user/<id>", methods=["GET", "POST"])
 @login_required
+@admin_required
 def edit_user(id):
     usuario = User()
     if request.method == 'POST':
@@ -50,6 +62,7 @@ def edit_user(id):
 
 @admin.route("/admin/user/<id>/remove")
 @login_required
+@admin_required
 def delete_user(id):
     usuario = User()
     usuario = usuario.removeUser(id)

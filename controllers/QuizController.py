@@ -10,10 +10,18 @@ class QuizController():
         return quizDB.query.get(id)
 
     def findLastOne(self):
-        return db.session.query(quizDB).order_by(quizDB.id.desc()).first()
+        try:
+            #query = db.session.query.order_by(desc(quizDB.id)).first()
+            query = quizDB.query.order_by(quizDB.id.desc()).first()
+            
+            return query
+            #return db.session.query(quizDB).order_by(quizDB.id.desc()).first()
+        except Exception as e:
+            print ("erro: " ,e)
+            return "erro"
 
+            
     def insertQuiz(self, info):
-        print(info)
         quiz = quizDB()
         quiz.name = info['name']
         quiz.response_time = info['time']
