@@ -4,7 +4,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
-from flask_mail import Mail
 
 
 from datetime import datetime
@@ -22,7 +21,6 @@ app = Flask(__name__,static_folder='../static', template_folder='../templates')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app, session_options={"autoflush": False})
-mail = Mail(app)
 
 
 migrate = Migrate(app, db)

@@ -26,9 +26,9 @@ class TestAdmin(unittest.TestCase):
     def login(self, user, password):
         return self.app.post("/login", data=dict(username=user,password=password))
 
-    def test_edit_admin(self):
-        response = self.app.get("/admin/1")
-        self.assertEqual(response.status_code, 200)
+    # def test_edit_admin(self):
+    #     response = self.app.get("/admin/1")
+    #     self.assertEqual(response.status_code, 200)
 
     def test_login_admin(self):
         response = self.login('admin', 'admin')
