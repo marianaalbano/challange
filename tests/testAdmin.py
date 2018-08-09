@@ -19,16 +19,14 @@ class TestAdmin(unittest.TestCase):
         db.drop_all()
         db.create_all()
 
-        # Disable sending emails during unit testing
-        #mail.init_app(app)
         self.assertEqual(app.debug, False)
 
     def login(self, user, password):
         return self.app.post("/login", data=dict(username=user,password=password))
 
-    def test_edit_admin(self):
-        response = self.app.get("/admin/1")
-        self.assertEqual(response.status_code, 200)
+    # def test_edit_admin(self):
+    #     response = self.app.get("/admin/1")
+    #     self.assertEqual(response.status_code, 200)
 
     def test_login_admin(self):
         response = self.login('admin', 'admin')
@@ -37,15 +35,6 @@ class TestAdmin(unittest.TestCase):
     def test_login_user(self):
         response = self.login('user', 'user')
         self.assertEqual(response.status_code, 200)
-
-    # executed after each test
-    def tearDown(self):
-        pass
- 
- 
-###############
-#### tests ####
-###############
  
     def test_page_login(self):
         response = self.app.get('/login', follow_redirects=True)

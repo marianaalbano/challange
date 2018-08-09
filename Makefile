@@ -7,9 +7,9 @@ PROJECTPATH := $(CURDIR)
 PYTHONPATH := /usr/bin/python
 
 # Export targets not associated with files
-.PHONY: test clean db run
+.PHONY: requirements test clean db run
 
-all: clean test db run
+all: clean requirements test db run
 
 # Clean build files
 clean:
@@ -24,6 +24,9 @@ clean:
 # Targets for testing
 test:
 	python tests/test.py
+
+requirements:
+	pip install -r $(PROJECTPATH)/requirements.txt
 
 db:
 	python $(PROJECTPATH)/model/Users.py db upgrade
