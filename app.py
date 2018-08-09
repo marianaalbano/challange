@@ -4,7 +4,7 @@ from routes.admin_required import admin_required
 from routes.admin import admin
 from routes.quiz import quiz
 from routes.question import question
-
+from routes.user import user
 
 from datetime import timedelta
 from flask import Flask, request, render_template, session,redirect, url_for
@@ -17,6 +17,7 @@ from flask_login import LoginManager, login_required, login_user, logout_user
 app.register_blueprint(admin)
 app.register_blueprint(quiz)
 app.register_blueprint(question)
+app.register_blueprint(user)
 
 app.secret_key = "challange"
 app.permanent_session_lifetime = timedelta(seconds=3600)

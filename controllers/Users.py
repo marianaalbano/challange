@@ -29,13 +29,16 @@ class User():
     
     def updateUser(self, id, info):
         user = userDB.query.get(id)
-        print(user.id)
         user.name = info['name']
         user.email = info['email']
         user.username = info['username']
         user.telefone = info['telefone']
         user.password = info['password']
-        user.admin = False
+        admin = info['gridRadios']
+        if admin == "option1":
+            user.admin = False
+        else:
+            user.admin = True
         return db.session.commit()
 
 

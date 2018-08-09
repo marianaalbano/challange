@@ -18,6 +18,7 @@ class QuestionsMultiple():
         quiz = QuizController()
         quiz_id = quiz.findOne(id)
         qm = Multiple()
+        qm.question = info['question']
         qm.option_1 = info['option_1']
         qm.option_2 = info['option_2']
         qm.option_3 = info['option_3']

@@ -37,7 +37,7 @@ def add_question(id):
         return redirect("/admin/quiz/%s/questions" %id)
 
     else:
-        return render_template("admin/quiz/questionNew.html")
+        return render_template("admin/quiz/question/questionNew.html")
 
 @question.route("/admin/quiz/<id>/questions_multiple/<id_question>/edit", methods=["GET", "POST"])
 @login_required
