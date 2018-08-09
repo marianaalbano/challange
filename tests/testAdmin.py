@@ -3,7 +3,7 @@ import os
 
 # some_file.py
 import sys
-sys.path.insert(0, '/Users/malbano/Documents/Projects/elite/')
+sys.path.insert(0, '/Users/hfujie/elite/')
 
 from app import app
 from model.Users import db
@@ -31,7 +31,7 @@ class TestAdmin(unittest.TestCase):
         app.config['WTF_CSRF_ENABLED'] = False
         app.config['DEBUG'] = False
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
-            os.path.join("/path/elite/model/app.db")
+            os.path.join("/Users/hfujie/elite/model/app.db")
         self.app = app.test_client()
         db.drop_all()
         db.create_all()
@@ -42,6 +42,10 @@ class TestAdmin(unittest.TestCase):
 
     def login(self, user, password):
         return self.app.post("/login", data=dict(username=user,password=password))
+
+    def test_edit_admin(self):
+        response = self.app.get("/admin/1")
+        self.assertEqual(response.status_code, 200)
 
     def test_login_admin(self):
         response = self.login('admin', 'admin')
