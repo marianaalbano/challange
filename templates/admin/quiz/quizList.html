@@ -30,7 +30,7 @@
 <div class="page-container">
     <div class="main-content">
             
-                <div style="width: 99%; margin-left: auto; margin-right: auto; margin-top: -2%;  text-align: center" class="shadow-sm p-3 mb-5 bg-white rounded">
+                <div style="width: 99%; margin-left: auto; margin-right: auto; margin-top: -3%;  text-align: center" class="shadow-sm p-3 mb-5 bg-white rounded">
                     <h3>
                       Questionários cadastrados
                       
@@ -38,8 +38,8 @@
                 
 
                     <div style="text-align: left; margin-left: 2%">
-                        <a href="/admin/quiz/new"><button type="button" class="btn btn-primary btn-sm">Novo Questionário</button></a>
                         <a href="/admin/quiz/new"><button type="button" class="btn btn-primary btn-sm">Novo Questionário</button></a><br><br>
+                  
                     </div>
                     
                 <div style="margin-left: 0,5%; margin-right: 0,5%">    
@@ -62,7 +62,8 @@
                                 <th> {{ quiz.category }} </th>
                                 <th> {{ quiz.dificulty }} </th>
                                 <th> {{ quiz.response_time }} minutos </th> 
-                                <th scope="col"><a href="/admin/quiz/{{ quiz.id }}/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;<a href="/admin/quiz/{{ quiz.id }}/remove"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
+                                <th scope="col"><a href="/admin/quiz/{{ quiz.id }}/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;<a href="/admin/quiz/{{ quiz.id }}/remove"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;<a href="/admin/quiz/{{ quiz.id }}/questions/new"><i class="fa fa-plus-square" aria-hidden="true" alt="Adicionar pergunta"></i></a><br><br>
+                                </th>
                             </tr>
                         {% endfor %}
                 
