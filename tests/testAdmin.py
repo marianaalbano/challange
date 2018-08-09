@@ -3,35 +3,18 @@ import os
 
 # some_file.py
 import sys
-sys.path.insert(0, '/Users/malbano/Documents/Projects/elite/')
+sys.path.insert(0, os.getcwd())
 
 from app import app
 from model.Users import db
 
 class TestAdmin(unittest.TestCase):
-    
-    # def setUp(self):
-    #     teste_app = app.test_client()
-    #     self.response = teste_app.get('/login')
-
-    
-    # def test_get(self):
-    #     print(self.response)
-    #     self.assertEqual(200, self.response.status_code)
-
-    # # Testamos se a nossa home retorna a string "ok"
-    # #def test_html_string_response(self):
-    # #    self.assertEqual("ok", self.response.data.decode('utf-8'))
-
-    # # Testamos se o content_type da resposta da home esta correto
-    # def test_content_type(self):
-    #     self.assertIn('text/html', self.response.content_type)
     def setUp(self):
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
         app.config['DEBUG'] = False
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
-            os.path.join("/path/elite/model/app.db")
+            os.path.join(os.getcwd() + "/model/app.db")
         self.app = app.test_client()
         db.drop_all()
         db.create_all()

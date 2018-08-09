@@ -1,8 +1,9 @@
 import unittest
+import sys, os
 
 
 import sys
-sys.path.insert(0, '/path/elite')
+sys.path.insert(0, os.getcwd())
 
 from testAdmin import TestAdmin
 
