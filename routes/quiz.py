@@ -48,6 +48,7 @@ def edit_quiz(id):
 
         q_multiple = QuestionsMultiple()
         q_multiple = q_multiple.findByQuiz(id)
+        print (q_multiple)
         return render_template("admin/quiz/quizEdit.html", quiz=quiz, q_disserty=q_disserty, q_multiple=q_multiple)
 
 @quiz.route("/admin/quiz/<id>/remove")

@@ -8,7 +8,7 @@ from controllers.QuizController import QuizController
 
 
 from flask_login import LoginManager, login_required, login_user, logout_user
-ß
+
 
 question = Blueprint('question', __name__)
 
