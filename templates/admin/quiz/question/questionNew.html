@@ -29,69 +29,107 @@
 
 <div class="page-container">
     <div class="main-content">
+        
             
-                <div style="width: 99%; margin-left: auto; margin-right: auto; margin-top: -3%;  text-align: center" class="shadow p-3 mb-5 bg-white rounded"><h3>Cadastro de pergunta </h3><br><br>
+                <div style="width: 99%; margin-left: auto; margin-right: auto; margin-top: -2%;  text-align: center" class="shadow p-3 mb-5 bg-white rounded"><h3>Cadastro de pergunta </h3><br><br>
         
                     
-                   <div style="margin-left: 80px"> 
-                    
-                        <form style=" width: 75%; text-align: left" method=post action="/admin/quiz/new">
-                          <div class="form-group row">
-                            <label for="inputNome" class="col-sm-2 col-form-label">Descrição</label>
-                            <div class="col-sm-10">
-                              <textarea name="question" class="form-control"></textarea>
-                            </div>
+                   <div style="margin-left: 60px"> 
+                       
+                       <nav>
+                          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-alternativa-tab" data-toggle="tab" href="#nav-alternativa" role="tab" aria-controls="nav-alternativa" aria-selected="true">Alternativa</a>
+                            <a class="nav-item nav-link" id="nav-dissertativa-tab" data-toggle="tab" href="#nav-dissertativa" role="tab" aria-controls="nav-dissertativa" aria-selected="false">Dissertativa</a>
+                           
                           </div>
-                          <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 1</label>
-                            <div class="col-sm-10">
-                                <input type="option" class="form-control" id="inputOption" name="option_1">
-                            </div>
-                           </div>
-                            <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 2</label>
-                            <div class="col-sm-10">
-                                <input type="option" class="form-control" id="inputOption" name="option_2">
-                            </div>
-                           </div>
-                            <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 3</label>
-                            <div class="col-sm-10">
-                                <input type="option" class="form-control" id="inputOption" name="option_3">
-                            </div>
-                           </div>
-                            <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 4</label>
-                            <div class="col-sm-10">
-                                <input type="option" class="form-control" id="inputOption" name="option_4">
-                            </div>
-                           </div>
-                          <div class="form-group row">
-                            <label for="inputTelefone" class="col-sm-2 col-form-label">Correta</label>
-                            <div class="col-sm-10">
-                                <select class="custom-select" id="inputGroupSelect01" name="dificulty">
-                                    <option value="option_1" selected>Alternativa 1</option>
-                                    <option value="option_2">Alternativa 2</option>
-                                    <option value="option_3">Alternativa 3</option>
-                                    <option value="option_4">Alternativa 4</option>
-                                   
-                                </select>
-                            </div>
-                          </div> 
-                          
-                          
-                         
-                          
-                          <div class="form-group row">
-                            <div class="col-sm-10">
-                              <button type="submit" class="btn btn-primary">Criar</button>
-                              <button type="reset" class="btn btn-primary">Apagar</button>
-                            </div>
-                          </div>
-                        </form>
+                        </nav><br><br>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-alternativa" role="tabpanel" aria-labelledby="nav-alternativa-tab">
+                                   <form style=" width: 75%; text-align: left" method=post action="/admin/quiz/{{ quiz.id }}/questions/new">
+                                      <div class="form-group row">
+                                        <label for="inputNome" class="col-sm-2 col-form-label">Descrição</label>
+                                        <div class="col-sm-10">
+                                          <textarea name="question" class="form-control" rows="7"></textarea>
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 1</label>
+                                        <div class="col-sm-10">
+                                            <input type="option" class="form-control" id="inputOption" name="option_1">
+                                        </div>
+                                       </div>
+                                        <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 2</label>
+                                        <div class="col-sm-10">
+                                            <input type="option" class="form-control" id="inputOption" name="option_2">
+                                        </div>
+                                       </div>
+                                        <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 3</label>
+                                        <div class="col-sm-10">
+                                            <input type="option" class="form-control" id="inputOption" name="option_3">
+                                        </div>
+                                       </div>
+                                        <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 4</label>
+                                        <div class="col-sm-10">
+                                            <input type="option" class="form-control" id="inputOption" name="option_4">
+                                        </div>
+                                       </div>
+                                      <div class="form-group row">
+                                        <label for="inputTelefone" class="col-sm-2 col-form-label">Correta</label>
+                                        <div class="col-sm-10">
+                                            <select class="custom-select" id="inputGroupSelect01" name="dificulty">
+                                                <option value="option_1" selected>Alternativa 1</option>
+                                                <option value="option_2">Alternativa 2</option>
+                                                <option value="option_3">Alternativa 3</option>
+                                                <option value="option_4">Alternativa 4</option>
+
+                                            </select>
+                                        </div>
+                                      </div> 
+
+
+
+
+                                      <div class="form-group row">
+                                        <div class="col-sm-10">
+                                          <button type="submit" class="btn btn-primary">Criar</button>
+                                          <button type="reset" class="btn btn-primary">Apagar</button>
+                                        </div>
+                                      </div>
+                                       <input type="hidden" name="type" value="multiple">
+                                    </form>
+                                </div>
+                        <div class="tab-pane fade" id="nav-dissertativa" role="tabpanel" aria-labelledby="nav-dissertativa-tab">
+                        
+                        
+                            <form style=" width: 75%; text-align: left" method=post action="/admin/quiz/{{ quiz.id }}/questions/new">
+                                          <div class="form-group row">
+                                            <label for="inputNome" class="col-sm-2 col-form-label">Descrição</label>
+                                            <div class="col-sm-10">
+                                              <textarea name="question" class="form-control" rows="8"></textarea>
+                                            </div>
+                                          </div>
+                                          <div class="form-group row">
+                                            <label for="inputNome" class="col-sm-2 col-form-label">Resposta</label>
+                                            <div class="col-sm-10">
+                                              <textarea name="question" class="form-control" rows="8"></textarea>
+                                            </div>
+                                          </div>                                  
+                                          <div class="form-group row">
+                                            <div class="col-sm-10">
+                                              <button type="submit" class="btn btn-primary">Criar</button>
+                                              <button type="reset" class="btn btn-primary">Apagar</button>
+                                            </div>
+                                          </div>
+                                <input type="hidden" name="type" value="disserty">
+                            </form>                   
+                        </div>
                     </div>
-                                
                 </div>
+            </div>
     </div>
 </div>
 {% endblock %}
