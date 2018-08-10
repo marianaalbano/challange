@@ -19,15 +19,14 @@ class QuestionsMultiple():
             print(info)
             quiz = QuizController()
             q_id = quiz.findOne(id)
-            print(q_id.id)
             qm = Multiple()
             qm.question = info['question']
             qm.option_1 = info['option_1']
             qm.option_2 = info['option_2']
             qm.option_3 = info['option_3']
             qm.option_4 = info['option_4']
-            qm.right_question = str(info['right_question'])
-            qm.quiz_id.append(q_id)
+            qm.right_question = info['right_question']
+            qm.quiz_id = q_id.id
             db.session.add(qm)
             return db.session.commit()
         except Exception as e:

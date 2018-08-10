@@ -15,13 +15,14 @@ class QuestionsDisserty():
 
     def insertQD(self, id, info):
         quiz = QuizController()
-        quiz_id = quiz.findOne(id)
+        q_id = quiz.findOne(id)
         qd = Disserty()
-        qd.questions = info['questions']
+        qd.questions = info['question']
         qd.right_question = info['right_question']
-        qd.quiz_id = quiz_id
+        qd.quiz_id = q_id.id
         db.session.add(qd)
         return db.session.commit()
+
 
     
     def updateQD(self, id, info):

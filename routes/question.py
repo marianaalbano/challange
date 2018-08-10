@@ -4,9 +4,11 @@ from controllers.QuestionsDisserty import QuestionsDisserty
 from controllers.QuizController import QuizController 
 
 from controllers.QuestionsMultiple import QuestionsMultiple
+from controllers.QuizController import QuizController
+
 
 from flask_login import LoginManager, login_required, login_user, logout_user
-
+ß
 
 question = Blueprint('question', __name__)
 
@@ -21,27 +23,21 @@ def list_question(id):
     q_multiple = QuestionsMultiple()
     q_multiple = q_multiple.findByQuiz(id)
 
-    return render_template("admin/quiz/questionsList.html", q_multiple=q_multiple, q_disserty=q_disserty)
+    return render_template("admin/quiz/quizList.html", q_multiple=q_multiple, q_disserty=q_disserty)
 
 @question.route("/admin/quiz/<id>/questions/new", methods=["GET", "POST"])
 @login_required
 @admin_required
 def add_question(id):
     if request.method == 'POST':
-        print("aqui")
-        q_multiple = QuestionsMultiple()
-        print ("2")
-        q_multiple.insertQM(id,request.form)
-        print("3")
-        # if request.form["type"] == "multiple":
-        #     q_multiple = QuestionsMultiple()
-        #     q_multiple.insertQM(id,request.form)
-        
-        # else:
-        #     q_disserty = QuestionsDisserty()
-        #     q_disserty.insertQD(id,request.form)
+        if request.form["type"] == "multiple":
+            q_multiple = QuestionsMultiple()
+            q_multiple.insertQM(id,request.form)
+        else:
+            q_disserty = QuestionsDisserty()
+            q_disserty.insertQD(id,request.form)
 
-        return redirect("/admin/quiz/%s/questions" %id)
+        return redirect("admin/quiz/%s/edit" %id)
 
     else:
         quiz = QuizController()
