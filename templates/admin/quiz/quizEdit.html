@@ -120,81 +120,82 @@
                                      </div>  
                                   
                                   
-                                 <div id="collapse{{ question.id }}" class="panel-collapse collapse in">
-                                  <div class="panel-body">
-                            
-                                   <form style=" width: 75%; text-align: left" method=post action="/admin/quiz/{{ quiz.id }}/questions_multiple/{{ question.id }}/edit">
-                                      <div class="form-group row">
-                                        <label for="inputNome" class="col-sm-2 col-form-label">Descrição</label>
-                                        <div class="col-sm-10">
-                                          <textarea name="question" class="form-control" rows="7" >{{ question.question }}</textarea>
-                                        </div>
-                                      </div>
-                                      <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 1</label>
-                                        <div class="col-sm-10">
-                                            <input type="option" class="form-control" id="inputOption" name="option_1" value="{{ question.option_1 }}">
-                                        </div>
-                                       </div>
-                                        <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 2</label>
-                                        <div class="col-sm-10">
-                                            <input type="option" class="form-control" id="inputOption" name="option_2" value="{{ question.option_2 }}">
-                                        </div>
-                                       </div>
-                                        <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 3</label>
-                                        <div class="col-sm-10">
-                                            <input type="option" class="form-control" id="inputOption" name="option_3" value="{{ question.option_3 }}">
-                                        </div>
-                                       </div>
-                                        <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 4</label>
-                                        <div class="col-sm-10">
-                                            <input type="option" class="form-control" id="inputOption" name="option_4" value="{{ question.option_4 }}">
-                                        </div>
-                                       </div>
-                                      <div class="form-group row">
-                                        <label for="inputTelefone" class="col-sm-2 col-form-label">Correta</label>
-                                        <div class="col-sm-10">
-                                            <select class="custom-select" id="inputGroupSelect01" name="right_question">
-                                                <option value="option_1" selected>{{ question.right_question }}</option>
-                                                <option value="option_1">Alternativa 1</option>
-                                                <option value="option_2">Alternativa 2</option>
-                                                <option value="option_3">Alternativa 3</option>
-                                                <option value="option_4">Alternativa 4</option>
+                                    <div id="collapse{{ question.id }}" class="panel-collapse collapse in">
+                                      <div class="panel-body">
+                                
+                                      <form style=" width: 75%; text-align: left" method=post action="/admin/quiz/{{ quiz.id }}/questions_multiple/{{ question.id }}/edit">
+                                          <div class="form-group row">
+                                            <label for="inputNome" class="col-sm-2 col-form-label">Descrição</label>
+                                            <div class="col-sm-10">
+                                              <textarea name="question" class="form-control" rows="7" >{{ question.question }}</textarea>
+                                            </div>
+                                          </div>
+                                          <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 1</label>
+                                            <div class="col-sm-10">
+                                                <input type="option" class="form-control" id="inputOption" name="option_1" value="{{ question.option_1 }}">
+                                            </div>
+                                          </div>
+                                            <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 2</label>
+                                            <div class="col-sm-10">
+                                                <input type="option" class="form-control" id="inputOption" name="option_2" value="{{ question.option_2 }}">
+                                            </div>
+                                          </div>
+                                            <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 3</label>
+                                            <div class="col-sm-10">
+                                                <input type="option" class="form-control" id="inputOption" name="option_3" value="{{ question.option_3 }}">
+                                            </div>
+                                          </div>
+                                            <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Alternativa 4</label>
+                                            <div class="col-sm-10">
+                                                <input type="option" class="form-control" id="inputOption" name="option_4" value="{{ question.option_4 }}">
+                                            </div>
+                                          </div>
+                                          <div class="form-group row">
+                                            <label for="inputTelefone" class="col-sm-2 col-form-label">Correta</label>
+                                            <div class="col-sm-10">
+                                                <select class="custom-select" id="inputGroupSelect01" name="right_question">
+                                                    <option value="option_1" selected>{{ question.right_question }}</option>
+                                                    <option value="option_1">Alternativa 1</option>
+                                                    <option value="option_2">Alternativa 2</option>
+                                                    <option value="option_3">Alternativa 3</option>
+                                                    <option value="option_4">Alternativa 4</option>
 
-                                            </select>
-                                        </div>
-                                      </div> 
-
-
+                                                </select>
+                                            </div>
+                                          </div> 
 
 
-                                      <div class="form-group row">
-                                        <div class="col-sm-10">
-                                          <button type="submit" class="btn btn-primary">Editar</button>
-                                          <button type="reset" class="btn btn-primary">Apagar</button>
-                                        </div>
-                                      </div>
-                                                                      
-                                    </form>
-                                </div>
+
+
+                                          <div class="form-group row">
+                                            <div class="col-sm-10">
+                                              <button type="submit" class="btn btn-primary">Editar</button>
+                                              <button type="reset" class="btn btn-primary">Apagar</button>
+                                            </div>
+                                          </div>
+                                                                          
+                                        </form>
+                                    </div>
+                                    </div>
+                                  </div>
                             </div>
-                        </div>
-                    </div>
                         {% endfor %}
+                        </div>
                             
                         
                         <div class="tab-pane fade" id="nav-disserty" role="tabpanel" aria-labelledby="nav-disserty-tab">
                             
                             {% for question in q_disserty %}
                             
-                            <div class="panel-group" id="accordion" style="text-align: left">
+                            <div class="panel-group" id="accordion{{ question.id }}" style="text-align: left">
                                   <div class="panel panel-default">
                                     <div class="panel-heading">
                                       <h5 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ question.id}}">
+                                        <a data-toggle="collapse" data-parent="#accordion{{ question.id }}" href="#collapse{{ question.id }}">
                                         Pergunta {{ question.id }}</a>
                                       </h5>
                                      </div>  
@@ -208,13 +209,13 @@
                                           <div class="form-group row">
                                             <label for="inputNome" class="col-sm-2 col-form-label">Descrição</label>
                                             <div class="col-sm-10">
-                                              <textarea name="question" class="form-control" rows="8"> {{ question.question }}</textarea>
+                                              <textarea name="question" class="form-control" rows="8"> {{ question.questions }}</textarea>
                                             </div>
                                           </div>
                                           <div class="form-group row">
-                                            <label for="inputNome" class="col-sm-2 col-form-label">Resposta</label>
+                                            <label for="inputNome" class="col-sm-2 col-form-label"></label>
                                             <div class="col-sm-10">
-                                              <textarea name="right_question" class="form-control" rows="8"></textarea>
+                                              <textarea name="right_question" class="form-control" rows="8">{{ question.right_question }}</textarea>
                                             </div>
                                           </div>                                  
                                           <div class="form-group row">

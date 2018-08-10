@@ -19,9 +19,10 @@ def list_question(id):
 
     q_disserty = QuestionsDisserty()
     q_disserty = q_disserty.findByQuiz(id)
-
+    
     q_multiple = QuestionsMultiple()
     q_multiple = q_multiple.findByQuiz(id)
+
 
     return render_template("admin/quiz/quizList.html", q_multiple=q_multiple, q_disserty=q_disserty)
 
