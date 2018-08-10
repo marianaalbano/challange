@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, redirect, request
 from admin_required import admin_required
 from controllers.QuestionsDisserty import QuestionsDisserty 
+from controllers.QuizController import QuizController 
+
 from controllers.QuestionsMultiple import QuestionsMultiple
 
 from flask_login import LoginManager, login_required, login_user, logout_user
@@ -26,18 +28,25 @@ def list_question(id):
 @admin_required
 def add_question(id):
     if request.method == 'POST':
-        if request.form["type"] == "multiple":
-            q_multiple = QuestionsMultiple()
-            q_multiple.insertQM(id,request.form)
+        print("aqui")
+        q_multiple = QuestionsMultiple()
+        print ("2")
+        q_multiple.insertQM(id,request.form)
+        print("3")
+        # if request.form["type"] == "multiple":
+        #     q_multiple = QuestionsMultiple()
+        #     q_multiple.insertQM(id,request.form)
         
-        else:
-            q_disserty = QuestionsDisserty()
-            q_disserty.insertQD(id,request.form)
+        # else:
+        #     q_disserty = QuestionsDisserty()
+        #     q_disserty.insertQD(id,request.form)
 
         return redirect("/admin/quiz/%s/questions" %id)
 
     else:
-        return render_template("admin/quiz/question/questionNew.html")
+        quiz = QuizController()
+        quiz = quiz.findOne(id)
+        return render_template("admin/quiz/question/questionNew.html", quiz=quiz)
 
 @question.route("/admin/quiz/<id>/questions_multiple/<id_question>/edit", methods=["GET", "POST"])
 @login_required

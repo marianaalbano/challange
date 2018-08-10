@@ -35,7 +35,7 @@
                     
                    <div style="margin-left: 80px"> 
                     
-                        <form style=" width: 75%; text-align: left" method=post action="/admin/quiz/new">
+                        <form style=" width: 75%; text-align: left" method=post action="/admin/quiz/{{ quiz.id }}/questions/new">
                           <div class="form-group row">
                             <label for="inputNome" class="col-sm-2 col-form-label">Descrição</label>
                             <div class="col-sm-10">
@@ -69,7 +69,7 @@
                           <div class="form-group row">
                             <label for="inputTelefone" class="col-sm-2 col-form-label">Correta</label>
                             <div class="col-sm-10">
-                                <select class="custom-select" id="inputGroupSelect01" name="dificulty">
+                                <select class="custom-select" id="inputGroupSelect01" name="right_question">
                                     <option value="option_1" selected>Alternativa 1</option>
                                     <option value="option_2">Alternativa 2</option>
                                     <option value="option_3">Alternativa 3</option>
