@@ -41,7 +41,20 @@ class TestAdmin(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("login-page", response.data)
 
+    def teste_admin_main(self):
+        response = self.app.get('/admin/main', follow_redirects=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("login-page", response.data)
 
+    def teste_admin_user(self):
+        response = self.app.get('/admin/user', follow_redirects=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("login-page", response.data)
+
+    def teste_admin_user_new(self):
+        response = self.app.get('/admin/user/new', follow_redirects=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("login-page", response.data)
 
 if __name__ == '__main__':
     unittest.main()
