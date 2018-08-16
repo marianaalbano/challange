@@ -3,7 +3,7 @@ from admin_required import admin_required
 from controllers.QuizController import QuizController
 from controllers.QuestionsMultiple import QuestionsMultiple
 from controllers.QuestionsDisserty import QuestionsDisserty 
-
+from controllers.Users import User
 
 
 from flask_login import LoginManager, login_required, login_user, logout_user
@@ -57,3 +57,14 @@ def remove_quiz(id):
     quiz = QuizController()
     quiz = quiz.removeQuiz(id)
     return redirect("admin/quiz")
+
+@quiz.route("/admin/quiz/user/<id>", methods=['POST'])
+@login_required
+@admin_required
+def add_quiz_user(id):
+    quiz = QuizController()
+    user = User()
+    #quiz_id = quiz.findOne()
+    user_id = user.findOne(id)
+    print(request.form)
+    return ('teste')
