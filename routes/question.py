@@ -8,6 +8,10 @@ from controllers.QuizController import QuizController
 
 
 from flask_login import LoginManager, login_required, login_user, logout_user
+<<<<<<< HEAD
+=======
+
+>>>>>>> 59bb6dd821ac14d9d6e310a9b618dd4d948c920b
 
 question = Blueprint('question', __name__)
 
@@ -18,9 +22,10 @@ def list_question(id):
 
     q_disserty = QuestionsDisserty()
     q_disserty = q_disserty.findByQuiz(id)
-
+    
     q_multiple = QuestionsMultiple()
     q_multiple = q_multiple.findByQuiz(id)
+
 
     return render_template("admin/quiz/quizList.html", q_multiple=q_multiple, q_disserty=q_disserty)
 

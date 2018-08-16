@@ -35,7 +35,11 @@ class QuestionsMultiple():
     
     def updateQM(self, id, info):
         qm = Multiple.query.get(id)
-        qm.questions = info['questions']
+        qm.question = info['questions']
+        qm.option_1 = info['option_1']
+        qm.option_2 = info['option_2']
+        qm.option_3 = info['option_3']
+        qm.option_4 = info['option_4']
         qm.right_question = info['right_question']
         return db.session.commit()
 
