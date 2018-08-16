@@ -58,13 +58,15 @@ def remove_quiz(id):
     quiz = quiz.removeQuiz(id)
     return redirect("admin/quiz")
 
-@quiz.route("/admin/quiz/user/<id>", methods=['POST'])
+@quiz.route("/admin/quiz/user/<id_user>", methods=['POST'])
 @login_required
 @admin_required
-def add_quiz_user(id):
-    quiz = QuizController()
-    user = User()
-    #quiz_id = quiz.findOne()
-    user_id = user.findOne(id)
-    print(request.form)
-    return ('teste')
+def add_quiz_user(id_user):
+    if request.method == "POST":
+        quiz = QuizController()
+        quiz.addUser(id_user, request.form)
+        print (id_user)
+        print (request.form)
+        return ('teste')
+    else:
+        return ("teste")
