@@ -28,58 +28,84 @@
 {% block content %}
 
 <div class="page-container">
-    <div class="main-content">
-            
-                <div style="width: 99%; margin-left: auto; margin-right: auto; margin-top: -2%;  text-align: center" class="shadow-sm p-3 mb-5 bg-white rounded" ><h3>Editar usuário - {{ usuario.name }} </h3><br><br>
-        
-                    
-                   <div style="margin-left: 80px"> 
-                    
-                        <form style=" width: 70%; text-align: left" method=post action="/admin/user/{{ usuario.id }}">
-                          <div class="form-group row">
-                            <label for="inputNome" class="col-sm-2 col-form-label">Nome</label>
-                            <div class="col-sm-10">
-                              <input type="nome" class="form-control" id="inputNome" name="name" value="{{ usuario.name }}">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">E-mail</label>
-                            <div class="col-sm-10">
-                              <input type="nome" class="form-control" id="inputEmail3" name="email" value="{{ usuario.email }}">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="inputTelefone" class="col-sm-2 col-form-label">Telefone</label>
-                            <div class="col-sm-10">
-                              <input type="nome" class="form-control" id="inputTelefone" name="telefone" value="{{ usuario.telefone }}">
-                            </div>
-                          </div>    
-                          
-                          
-                           <div class="form-group row">
-                            <label for="inputUsername" class="col-sm-2 col-form-label">Login</label>
-                            <div class="col-sm-10">
-                              <input type="nome" class="form-control" id="inputNome" name="username" value="{{ usuario.username }}" >
-                            </div>
-                          </div>
-                                                                                                            
-                          <div class="form-group row">
-                            <label for="inputPassword3" class="col-sm-2 col-form-label">Senha</label>
-                            <div class="col-sm-10">
-                              <input type="password" class="form-control" id="inputPassword3" name="password" value="{{ usuario.password }}">
-                            </div>
-                          </div>
-                          
-                          <div class="form-group row">
-                            <div class="col-sm-10">
-                              <button type="submit" class="btn btn-primary">Editar</button>&nbsp;&nbsp;
-                              <button type="reset" class="btn btn-primary">Apagar</button>
-                            </div>
-                          </div>
-                        </form>
-        </div>
+  <div class="main-content">       
+    <div style="width: 99%; margin-left: auto; margin-right: auto; margin-top: -2%;  text-align: center" class="shadow-sm p-3 mb-5 bg-white rounded" ><h3>Editar usuário - {{ usuario.name }} </h3><br><br>
+      <div style="margin-left: 80px">            
+        <form style=" width: 70%; text-align: left" method=post action="/admin/user/{{ usuario.id }}">
+          <div class="form-group row">
+            <label for="inputNome" class="col-sm-2 col-form-label">Nome</label>
+            <div class="col-sm-10">
+              <input type="nome" class="form-control" id="inputNome" name="name" value="{{ usuario.name }}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">E-mail</label>
+            <div class="col-sm-10">
+              <input type="nome" class="form-control" id="inputEmail3" name="email" value="{{ usuario.email }}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputTelefone" class="col-sm-2 col-form-label">Telefone</label>
+            <div class="col-sm-10">
+              <input type="nome" class="form-control" id="inputTelefone" name="telefone" value="{{ usuario.telefone }}">
+            </div>
+          </div>    
+          
+          
+            <div class="form-group row">
+            <label for="inputUsername" class="col-sm-2 col-form-label">Login</label>
+            <div class="col-sm-10">
+              <input type="nome" class="form-control" id="inputNome" name="username" value="{{ usuario.username }}" >
+            </div>
+          </div>
+                                                                                            
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Senha</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword3" name="password" value="{{ usuario.password }}">
+            </div>
+          </div>
+          
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">Editar</button>&nbsp;&nbsp;
+              <button type="reset" class="btn btn-primary">Apagar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Vincular questionário</button>
+            </div>
+          </div>
+        </form>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Questionários disponíveis</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                {% for quiz in quizzes %}
+                        
+                            <tr>
                                 
-                </div>
+                                <th> {{ quiz.name }} </th>
+                                <th> {{ quiz.category }} </th>
+                                <th> {{ quiz.dificulty }} </th>
+                                
+                                
+                            </tr>
+                  {% endfor %}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary">Salvar</button>
+            </div>
+          </div>
         </div>
+      </div>
+      </div>                    
+    </div>
+  </div>
 </div>
 {% endblock %}  
