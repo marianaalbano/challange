@@ -9,7 +9,6 @@ from controllers.QuizController import QuizController
 
 from flask_login import LoginManager, login_required, login_user, logout_user
 
-
 question = Blueprint('question', __name__)
 
 @question.route("/admin/quiz/<id>/questions", methods=["GET"])

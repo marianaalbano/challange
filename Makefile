@@ -26,7 +26,7 @@ test:
 	python tests/test.py
 
 requirements:
-	pip install -r $(PROJECTPATH)/requirements.txt
+	sudo pip install -r $(PROJECTPATH)/requirements.txt
 
 db:
 	python $(PROJECTPATH)/model/Users.py db upgrade

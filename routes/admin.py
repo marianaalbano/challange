@@ -3,6 +3,7 @@ from flask_login import LoginManager, login_required, login_user, logout_user
 
 from admin_required import admin_required
 from controllers.Users import User
+from controllers.QuizController import QuizController
 from model.Users import db
 
 
@@ -57,7 +58,9 @@ def edit_user(id):
         return redirect('/admin/users')
     else:
         usuario = usuario.findOne(id)
-        return render_template("admin/userEdit.html", usuario=usuario)
+        quiz = QuizController()
+        quizzes = quiz.findAll()
+        return render_template("admin/userEdit.html", usuario=usuario, quizzes=quizzes)
 
 
 @admin.route("/admin/user/<id>/remove")
