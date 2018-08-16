@@ -10,43 +10,54 @@ class User():
         return userDB.query.get(id)
 
     def insertUser(self, info):
-        print(info)
-        user = userDB()
-        user.name = info['name']
-        user.email = info['email']
-        user.username = info['username']
-        user.telefone = info['telefone']
-        user.password = info['password']
-        user.admin = info["gridRadios"]
-        if user.admin == "option1":
-            user.admin = False
-        else:
-            user.admin = True
+        try:
+            user = userDB()
+            user.name = info['name']
+            user.email = info['email']
+            user.username = info['username']
+            user.telefone = info['telefone']
+            user.password = info['password']
+            user.admin = info["gridRadios"]
+            if user.admin == "option1":
+                user.admin = False
+            else:
+                user.admin = True
 
-        db.session.add(user)
-        return db.session.commit()
+            db.session.add(user)
+            db.session.commit()
+            return 200
+        except Exception as e:
+            return 403
 
     
     def updateUser(self, id, info):
-        user = userDB.query.get(id)
-        user.name = info['name']
-        user.email = info['email']
-        user.username = info['username']
-        user.telefone = info['telefone']
-        user.password = info['password']
-        admin = info['gridRadios']
-        if admin == "option1":
-            user.admin = False
-        else:
-            user.admin = True
-        return db.session.commit()
+        try:
+            user = userDB.query.get(id)
+            user.name = info['name']
+            user.email = info['email']
+            user.username = info['username']
+            user.telefone = info['telefone']
+            user.password = info['password']
+            admin = info['gridRadios']
+            if admin == "option1":
+                user.admin = False
+            else:
+                user.admin = True
+            db.session.commit()
+            return 200
+        except Exception as e:
+            return 403
 
 
     def removeUser(self, id):
-        user = userDB.query.get(id)
-        db.session.delete(user)
-        return db.session.commit()
-
+        try:
+            user = userDB.query.get(id)
+            db.session.delete(user)
+            db.session.commit()
+            return 200
+        except Exception as e:
+            return 403
+            
     def loginUser(self, username, password):
         try:
             usuario = db.session.query(userDB).filter(userDB.username == username).first()

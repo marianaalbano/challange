@@ -1,12 +1,18 @@
 import unittest
 import os
 
+
+from flask_login import login_user
 # some_file.py
 import sys
 sys.path.insert(0, os.getcwd())
 
 from app import app
 from model.Users import db
+
+
+from controllers.Users import User
+
 
 class TestAdmin(unittest.TestCase):
     def setUp(self):
@@ -25,24 +31,32 @@ class TestAdmin(unittest.TestCase):
     ### TEST INSERT / UPDATE ###
 
     def login(self, user, password):
-        return self.app.post("/login", data=dict(username=user,password=password))
+        try:
+            user = User()
+            user = user.loginUser(user,password)
+            if user.admin == True:
+                login_user(user, remember=False)
+                return 200
+            elif user.admin == False:
+                login_user(user, remember=False)
+                return 200
+        except Exception as e:
+            return 403
 
-    def test_login_admin(self):
-        response = self.login('admin', 'admin')
-        self.assertEqual(response.status_code, 200)
+        #return self.app.post("/login", data=dict(username=user,password=password))
 
-    def test_login_user(self):
-        response = self.login('user', 'user')
-        self.assertEqual(response.status_code, 200)
+    # def test_login_admin(self):
+    #     response = self.login('admin_teste', 'admin-teste')
+    #     self.assertEqual(response, 200)
+
+    # def test_login_user(self):
+    #     response = self.login('admin_teste', 'admin-teste')
+    #     self.assertEqual(response, 200)
 
     def add_user(self, info):
-        return self.app.post("/admin/user/new", data=dict(name=info["name"],
-                                                          email=info["email"],
-                                                          username=info["username"],
-                                                          telefone=info["telefone"],
-                                                          password=info["password"],
-                                                          admin=info["admin"]), 
-                                                follow_redirects=True)
+        user = User()
+        user = user.insertUser(info)
+        return user
 
     def test_add_admin(self):
         info = {"name": "admin teste",
@@ -50,9 +64,9 @@ class TestAdmin(unittest.TestCase):
                 "username":"admin_teste",
                 "telefone":"11111112",
                 "password":"admin-teste",
-                "admin":True}
+                "gridRadios":"option2"}
         response = self.add_user(info)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response, 200)
 
     def test_add_user(self):
         info = {"name": "admin teste",
@@ -60,27 +74,15 @@ class TestAdmin(unittest.TestCase):
                 "username":"admin_teste",
                 "telefone":"11111112",
                 "password":"admin-teste",
-                "admin":False}
+                "gridRadios":"option1"}
         response = self.add_user(info)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response, 200)
 
 
-    def add_quiz(self, info):
-        return self.app.post("/admin/quiz/new", data=dict(name=info["name"],
-                                                          response_time=info["response_time"],
-                                                          category=info["category"],
-                                                          dificulty=info["dificulty"]),
-                                                follow_redirects=True)
+    def test_search_user(self):
+        user = User()
 
-    def test_add_quiz(self):
-        response = self.login('admin', 'admin')
-        info = {"name": "quiz teste",
-                "response_time": "00:10:00",
-                "category":"Python",
-                "dificulty":"Junior"}
-        response = self.add_quiz(info)
-        print (response.data)
-        self.assertEqual(response.status_code, 200)
+        
 
 
 
