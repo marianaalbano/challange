@@ -17,3 +17,10 @@ def change_profile_user(id):
     else:
         usuario = usuario.findOne(id)
         return render_template('edituser', usuario=usuario)
+
+@user.route("/user/<id>/quizzes", methods=["GET"])
+@login_required
+def user_quizzes(id):
+    usuario = User()
+    usuario = usuario.findUserQuiz(id)
+    return render_template("edituser")

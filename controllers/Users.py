@@ -1,6 +1,10 @@
 from model.Users import db
 from model.Users import Users as userDB
 
+from model.Users import Quiz
+
+from model.Users import quiz_users
+
 class User():
     
     def findAll(self):
@@ -8,6 +12,13 @@ class User():
 
     def findOne(self,id):
         return userDB.query.get(id)
+
+    def findUserQuiz(self, id):
+        #return userDB.query.filter(userDB.quiz_users.any(users_id == id)).all()
+        #query = db.session.query(userDB).join(userDB.quiz_users).filter()
+        #return userDB.query.join(filter_by(users_id=id)).all()
+        #return db.session.query(quiz_users).join(userDB.quiz_users).filter(use) filter(quiz_users.users_id == id).all()
+        return Quiz.query.filter(Quiz.users.any(id=id)).all()
 
     def insertUser(self, info):
         try:

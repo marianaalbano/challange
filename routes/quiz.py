@@ -65,8 +65,6 @@ def add_quiz_user(id_user):
     if request.method == "POST":
         quiz = QuizController()
         quiz.addUser(id_user, request.form)
-        print (id_user)
-        print (request.form)
         return ('teste')
     else:
         return ("teste")
