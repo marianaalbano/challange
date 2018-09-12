@@ -33,12 +33,12 @@
 
 </head>
 
-<body class="animsition">
+<body class="animsition light">
     <div class="page-wrapper">
         
         <!-- MENU LATERAL-->
         <aside class="menu-sidebar d-none d-lg-block">
-            <div class="logo">
+            <div class="logo" style="background-color:#FDF073">
                 <a href="/user/main">
                     <img src="/static/images/icon/logo.png" alt="Cool Admin" />
                 </a>
@@ -70,99 +70,100 @@
         </aside>
         <!-- FIM MENU LATERAL-->
 
-        <!-- PAGE CONTAINER-->
-        <div class="page-container">
-            <!-- TOPO-->
-            <header class="header-desktop">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="header-wrap">
-                           
-                            <div class="header-button">
-                                <div class="noti-wrap">
-                                    
-                                    
-                                </div>
+       <!-- PAGE CONTAINER-->
+       <div class="page-container">
+        <!-- TOPO-->
+        <header class="header-desktop"  style="background-color:#FDF073">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap">
+                       
+                        <div class="header-button">
+                            <div class="noti-wrap">
+                                
+                                
+                            </div>
+                            {% if current_user.is_authenticated %}
 
-                                {% if current_user.is_authenticated %}
-                                <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
-                                            <img src="/static/images/icon/avatar-01.png" alt="user image" />
-                                        </div>
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="/static/#">{{ current_user.name }}</a>
-                                        </div>
-                                        <div class="account-dropdown js-dropdown">
-                                            <div class="info clearfix">
-                                                <div class="image">
+                            <div>
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="image">
+                                        <img src="/static/images/icon/avatar-01.png" alt="user image" />
+                                    </div>
+                                    <div class="content">
+                                        <a class="js-acc-btn" href="/static/#">{{ current_user.name }}</a>
+                                    </div>
+                                    <div class="account-dropdown js-dropdown">
+                                        <div class="info clearfix">
+                                            <div class="image">
 
-                                                    <a href="#">
-                                                        <img src="/static/images/icon/avatar-01.png" alt="John Doe" />
-                                                    </a>
-                                                </div>
-                                                <div class="content">
-                                                    <h5 class="name">
-                                                        <a href="/static/#">{{ current_user.name }}</a>
-                                                    </h5>
-                                                    <span class="email">{{ current_user.email }}</span>
-                                                </div>
+                                                <a href="#">
+
+                                                    <img src="/static/images/icon/avatar-01.png" alt="Usuario" />
+                                                </a>
                                             </div>
-                                            <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="/static/#">
-                                                        <i class="zmdi zmdi-account"></i>Meu Perfil</a>
-                                                </div>
+                                            <div class="content">
+                                                <h5 class="name">
+                                                    <a href="/static/#">{{ current_user.name }}</a>
+                                                </h5>
+                                                <span class="email">{{ current_user.email }}</span>
                                             </div>
-                                            <div class="account-dropdown__footer">
-                                                <a href="/logout">
-                                                    <i class="zmdi zmdi-power"></i>Sair</a>
+                                        </div>
+                                        <div class="account-dropdown__body">
+                                            <div class="account-dropdown__item">
+                                                <a href="/static/#">
+                                                    <i class="zmdi zmdi-account"></i>Meu Perfil</a>
                                             </div>
+                                        </div>
+                                        <div class="account-dropdown__footer">
+                                            <a href="/logout">
+                                                <i class="zmdi zmdi-power"></i>Sair</a>
                                         </div>
                                     </div>
                                 </div>
-                                {% endif %}
-
                             </div>
+
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-            </header>
-            <!-- FIM TOPO-->
+            </div>
+        </header>
+        <!-- FIM TOPO-->
 
-            <!-- CONTEUDO PRINCIPAL-->
-            
-            {% block content %} {% endblock %}
-            
-            <!-- FIM CONTEUDO PRINCIPAL -->
-            <!-- FIM PAGE CONTAINER-->
-        </div>
-
+        <!-- CONTEUDO PRINCIPAL-->
+        
+        {% block content %} {% endblock %}
+        
+        <!-- FIM CONTEUDO PRINCIPAL-->
+        <!-- FIM PAGE CONTAINER-->
     </div>
 
-    <!-- Jquery JS-->
-    <script src="/static/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap JS-->
-    <script src="/static/vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="/static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="/static/vendor/slick/slick.min.js">
-    </script>
-    <script src="/static/vendor/wow/wow.min.js"></script>
-    <script src="/static/vendor/animsition/animsition.min.js"></script>
-    <script src="/static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="/static/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="/static/vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="/static/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="/static/vendor/select2/select2.min.js">
-    </script>
+</div>
 
-    <!-- Main JS-->
-    <script src="/static/js/main.js"></script>
+<!-- Jquery JS-->
+<script src="/static/vendor/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap JS-->
+<script src="/static/vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="/static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<!-- Vendor JS       -->
+<script src="/static/vendor/slick/slick.min.js">
+</script>
+<script src="/static/vendor/wow/wow.min.js"></script>
+<script src="/static/vendor/animsition/animsition.min.js"></script>
+<script src="/static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+</script>
+<script src="/static/vendor/counter-up/jquery.waypoints.min.js"></script>
+<script src="/static/vendor/counter-up/jquery.counterup.min.js">
+</script>
+<script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+<script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="/static/vendor/chartjs/Chart.bundle.min.js"></script>
+<script src="/static/vendor/select2/select2.min.js">
+</script>
+
+<!-- Main JS-->
+<script src="/static/js/main.js"></script>
 
 </body>
 
