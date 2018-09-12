@@ -32,4 +32,4 @@ def user_quizzes(id):
 def user_response(id_quiz):
     questions = QuizController()
     questions = questions.findOne(id_quiz)
-    return render_template("user/quizzes/quizList.html", questions=questions)
+    return render_template("user/quizzes/quizPlay.html", questions=questions)
