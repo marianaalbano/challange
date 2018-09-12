@@ -9,6 +9,8 @@ from flask_migrate import Migrate, MigrateCommand
 from datetime import datetime
 import os
 
+from config import app
+
 # POSTGRES_USER = os.environ["POSTGRES_USER"]
 # POSTGRES_PW = os.environ["POSTGRES_PW"]
 # POSTGRES_URL = os.environ["POSTGRES_URL"]
@@ -16,10 +18,6 @@ import os
 
 # DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
 
-
-app = Flask(__name__,static_folder='../static', template_folder='../templates')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app, session_options={"autoflush": False})
 
 

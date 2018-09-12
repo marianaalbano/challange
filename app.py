@@ -1,5 +1,6 @@
 from controllers.Users import User
-from model.Users import db, app
+from model.Users import db
+from model.config import app
 from routes.admin_required import admin_required
 from routes.admin import admin
 from routes.quiz import quiz
@@ -12,7 +13,7 @@ from flask_login import LoginManager, login_required, login_user, logout_user
 
 
 
-# app = Flask(__name__)
+#app = Flask(__name__,static_folder='../static', template_folder='../templates')
 
 app.register_blueprint(admin)
 app.register_blueprint(quiz)
