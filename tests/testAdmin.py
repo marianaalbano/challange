@@ -101,6 +101,7 @@ class TestAdmin(unittest.TestCase):
     def teste_admin_main(self):
         response = self.app.get('/admin/main', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
+        print (response.data)
         self.assertIn("login-page", response.data)
 
     def teste_admin_user(self):

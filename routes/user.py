@@ -21,6 +21,6 @@ def change_profile_user(id):
 @user.route("/user/<id>/quizzes", methods=["GET"])
 @login_required
 def user_quizzes(id):
-    usuario = User()
-    usuario = usuario.findUserQuiz(id)
-    return render_template("edituser")
+    quizzes = User()
+    quizzes = quizzes.findUserQuiz(id)
+    return render_template("user/quizzes/quizList.html", quizzes=quizzes)
