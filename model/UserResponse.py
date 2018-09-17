@@ -10,6 +10,6 @@ class UserResponse(db.Document):
     id_user = db.StringField()
     id_quiz = db.StringField()
     questions = db.ListField()
-    date = db.DateTimeField(default=datetime.utcnow)
+    date = db.DateTimeField(default=datetime.now())
 
 

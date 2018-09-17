@@ -7,8 +7,6 @@ from controllers.QuizController import QuizController
 from model.Users import db
 from model.UserResponse import UserResponse
 
-from model.UserResponse import UserResponse
-
 user = Blueprint('user', __name__)
 
 @user.route("/user/<id>", methods=['GET', 'POST'])
@@ -25,16 +23,35 @@ def change_profile_user(id):
 @user.route("/user/<id>/quizzes", methods=["GET"])
 @login_required
 def user_quizzes(id):
+    lista = []
+
+    user_response = UserResponse.objects(id_user='%s' %current_user.id)
+
     quizzes = User()
     quizzes = quizzes.findUserQuiz(id)
-    return render_template("user/quizzes/quizList.html", quizzes=quizzes)
+    print (type(user_response.count()))
+    if user_response.count() > 0:
+        print("cai aqui")
+        for quiz_available in quizzes:
+            for quiz_answered in user_response:
+                if int(quiz_available.id) == int(quiz_answered["id_quiz"]):
+                    print ("cai no if")
+                    continue
+                else:
+                    print("cai no else")
+                    lista.append(quiz_available)
+
+    else:
+        lista = quizzes
+    
+    return render_template("user/quizzes/quizList.html", quizzes=lista)
 
 @user.route("/user/quiz/<id_quiz>/questions", methods=["GET", "POST"])
 @login_required
 def user_response(id_quiz):
     if request.method == "POST":
         user_response = UserResponse()
-        print(request.form)
+
         response = []
         for responses in request.form:
             if "disserty" in responses:
@@ -49,7 +66,7 @@ def user_response(id_quiz):
                 
         user_response.name = current_user.name
         user_response.id_user = "%s" %current_user.id
-        user_response.id_quiz = '1'
+        user_response.id_quiz = id_quiz
         user_response.questions = response
         user_response.save()
 
