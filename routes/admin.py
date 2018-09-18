@@ -79,7 +79,8 @@ def delete_user(id):
 @admin_required
 def results_all():
     results = ResponseController()
-    results = usuario.findAll()
+    results = results.findAll()
+    print (results)
     return render_template("admin/results/userResults.html", results=results)
 
 

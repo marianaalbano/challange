@@ -1,0 +1,69 @@
+{% include "admin/base.html" %}
+
+{% block css %}
+
+
+<!-- Principal CSS-->
+    <link href="/static/css/theme.css" rel="stylesheet" media="all">
+
+    <!-- Fontfaces CSS-->
+    <link href="/static/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/static/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    
+
+    <!-- Vendor CSS-->
+    <link href="/static/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+{% endblock %}
+{% block content %}
+
+<div class="page-container">
+    <div class="main-content">
+            
+                <div style="width: 99%; margin-left: auto; margin-right: auto; margin-top: -2%;  text-align: center" class="shadow p-3 mb-5 bg-white rounded">
+                    <h3>
+                      Usuários Cadastrados
+                      
+                    </h3>
+                
+                                        
+                <div style="margin-left: 20px; margin-right: 20px">    
+                    <table class="table">
+                     <thead class="thead-light">
+                        <tr>
+                            
+                            <th scope="col">Nome</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Questionário</th>
+                            <th scope="col">Resultado</th>
+                            <th scope="col">Opções</th>
+                        </tr>
+                    </thead>
+                        {% for result in results %}
+                        
+                            <tr>
+                                
+                                <th> {{ result.name }} </th>
+                                <th> {{ result.id_quiz }} </th>
+                                <th> {{ usuario.username }} </th>
+                                <th> {{ usuario.telefone }} </th> 
+                                <th scope="col"><a href="/admin/user/{{ usuario.id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;<a href="/admin/user/{{ usuario.id }}/remove"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
+                            </tr>
+                        {% endfor %}
+                
+                    </table>
+                </div>                 
+                </div>
+    </div>
+</div>
+{% endblock %}
