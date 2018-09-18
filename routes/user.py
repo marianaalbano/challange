@@ -47,6 +47,9 @@ def user_quizzes(id):
 @user.route("/user/quiz/<id_quiz>/questions", methods=["GET", "POST"])
 @login_required
 def user_response(id_quiz):
+    questions = QuizController()
+    questions = questions.findOne(id_quiz)
+
     if request.method == "POST":
         user_response = UserResponse()
 
@@ -64,12 +67,13 @@ def user_response(id_quiz):
                 
         user_response.name = current_user.name
         user_response.id_user = "%s" %current_user.id
+        user_response.email = current_user.email
         user_response.id_quiz = id_quiz
+        user_response.name_quiz = questions.name
+
         user_response.questions = response
         user_response.save()
 
         return redirect('/user/%s/quizzes' %current_user.id)
     else:
-        questions = QuizController()
-        questions = questions.findOne(id_quiz)
         return render_template("user/quizzes/quizPlay.html", questions=questions)

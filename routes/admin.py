@@ -80,7 +80,6 @@ def delete_user(id):
 def results_all():
     results = ResponseController()
     results = results.findAll()
-    print (results)
     return render_template("admin/results/userResults.html", results=results)
 
 
