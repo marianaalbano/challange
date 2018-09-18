@@ -24,7 +24,10 @@
     <link href="/static/vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-{% endblock %}
+
+    
+
+    {% endblock %}
 {% block content %}
 
 <div class="page-container">
@@ -32,13 +35,13 @@
             
         <div style="width: 99%; margin-left: auto; margin-right: auto; margin-top: -2%;  text-align: center" class="shadow p-3 mb-5 bg-white rounded">
             <h3>
-                Usuários Cadastrados
+                Resultados
                 
-            </h3>
+            </h3><br>
         
                                 
             <div style="margin-left: 20px; margin-right: 20px">    
-                <table class="table">
+                <table class="table" id="quizResults">
                     <thead class="thead-light">
                         <tr>
                              <th scope="col">Nome</th>
@@ -54,13 +57,29 @@
                             <th> {{ result.email }} </th>
                             <th>  {{ result.name_quiz }}</th>
                             <th>  {{ result.right_question }} / {{ result.total_questions }}</th>
-                            <th>Expandir</th>
+                            <th>Validar</th>
                         </tr>
                                                                    
                     {% endfor %} 
                         
                             
                 </table>
+                <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+                <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+                <script>
+                $(document).ready(function(){
+                    $('#quizResults').DataTable({
+                        "language": {
+                              "lengthMenu": "Mostrando _MENU_ registros por página",
+                              "zeroRecords": "Nada encontrado",
+                              "info": "Mostrando página _PAGE_ de _PAGES_",
+                              "infoEmpty": "Nenhum registro disponível",
+                              "infoFiltered": "(filtrado de _MAX_ registros no total)",
+                              "search": "Pesquisar"                             
+                          }
+                      });
+                });
+                </script>
             </div>
         </div>            
     </div>

@@ -41,7 +41,7 @@
                     </div>
                     
                 <div style="margin-left: 20px; margin-right: 20px">    
-                    <table class="table">
+                    <table class="table" id="userList">
                      <thead class="thead-light">
                         <tr>
                             
@@ -65,6 +65,22 @@
                         {% endfor %}
                 
                     </table>
+                    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+                    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+                    <script>
+                    $(document).ready(function(){
+                        $('#userList').DataTable({
+                            "language": {
+                                  "lengthMenu": "Mostrando _MENU_ registros por página",
+                                  "zeroRecords": "Nada encontrado",
+                                  "info": "Mostrando página _PAGE_ de _PAGES_",
+                                  "infoEmpty": "Nenhum registro disponível",
+                                  "infoFiltered": "(filtrado de _MAX_ registros no total)",
+                                  "search": "Pesquisar"                             
+                              }
+                          });
+                    });
+                    </script>
                 </div>                 
                 </div>
     </div>

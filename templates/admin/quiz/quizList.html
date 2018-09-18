@@ -42,8 +42,8 @@
                   
                     </div>
                     
-                <div style="margin-left: 0,5%; margin-right: 0,5%">    
-                    <table class="table">
+                <div style="margin-left: 20px; margin-right: 20px">    
+                    <table class="table" id="quizList">
                      <thead class="thead-light">
                         <tr>
                             
@@ -62,12 +62,27 @@
                                 <th> {{ quiz.category }} </th>
                                 <th> {{ quiz.dificulty }} </th>
                                 <th> {{ quiz.response_time }} minutos </th> 
-                                <th scope="col"><a href="/admin/quiz/{{ quiz.id }}/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;<a href="/admin/quiz/{{ quiz.id }}/remove"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;<a href="/admin/quiz/{{ quiz.id }}/questions/new"><i class="fa fa-plus-square" aria-hidden="true" alt="Adicionar pergunta"></i></a><br><br>
-                                </th>
+                                <th scope="col"><a href="/admin/quiz/{{ quiz.id }}/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;<a href="/admin/quiz/{{ quiz.id }}/remove"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;<a href="/admin/quiz/{{ quiz.id }}/questions/new"><i class="fa fa-plus-square" aria-hidden="true" alt="Adicionar pergunta"></i></a></th>
                             </tr>
                         {% endfor %}
                 
                     </table>
+                    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+                    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+                    <script>
+                    $(document).ready(function(){
+                        $('#quizList').DataTable({
+                            "language": {
+                                  "lengthMenu": "Mostrando _MENU_ registros por página",
+                                  "zeroRecords": "Nada encontrado",
+                                  "info": "Mostrando página _PAGE_ de _PAGES_",
+                                  "infoEmpty": "Nenhum registro disponível",
+                                  "infoFiltered": "(filtrado de _MAX_ registros no total)",
+                                  "search": "Pesquisar"                             
+                              }
+                          });
+                    });
+                    </script>
                </div>  
                </div>
     </div>
