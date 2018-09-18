@@ -37,10 +37,10 @@
                         
                             <div class="form-group">
                                 <label  class="col-sm-10 col-form-label">Pergunta:  {{ question.question }} </label>
-                                <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="option_1"> &nbsp;&nbsp; {{ question.option_1 }}</label>
-                                <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="option_2"> &nbsp;&nbsp; {{ question.option_2 }}</label>
-                                <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="option_3"> &nbsp;&nbsp; {{ question.option_3 }}</label>
-                                <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="option_4"> &nbsp;&nbsp; {{ question.option_4 }}</label>
+                                <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="{{ question.id }}_A"> &nbsp;&nbsp; {{ question.option_1 }}</label>
+                                <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="{{ question.id }}_B"> &nbsp;&nbsp; {{ question.option_2 }}</label>
+                                <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="{{ question.id }}_C"> &nbsp;&nbsp; {{ question.option_3 }}</label>
+                                <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="{{ question.id }}_D"> &nbsp;&nbsp; {{ question.option_4 }}</label>
                             </div>                        
                     </div>
                 </div>

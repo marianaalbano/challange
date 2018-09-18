@@ -6,6 +6,10 @@ from controllers.Users import User
 from controllers.ResponseController import ResponseController
 
 from controllers.QuizController import QuizController
+
+from controllers.QuestionsDisserty import QuestionsDisserty
+from controllers.QuestionsMultiple import QuestionsMultiple
+
 from model.Users import db
 
 
@@ -78,8 +82,56 @@ def delete_user(id):
 @login_required
 @admin_required
 def results_all():
-    results = ResponseController()
-    results = results.findAll()
+    results = []
+
+    response = ResponseController()
+    user_response = response.findAll()
+    
+    questions_disserty = QuestionsDisserty()
+    questions_multiple = QuestionsMultiple()
+
+    # percorre todos os dicionarios do MongoDB
+    for u in user_response:   
+        right = []
+
+        # percorre as questoes de um unico usuario
+        for question in u["questions"]:
+            
+            # verifica se a questao multipla escolha esta correta
+            id_question = int(question["id_question"])
+            if question["type"] == "multiple":
+                q = questions_multiple.findOne(id_question)
+                if q.right_question == question["response"]:
+                    right.append(question)
+
+            # verifica se a questao dissertativa esta correta
+            elif question["type"] == "disserty":
+                q = questions_disserty.findOne(id_question)
+                if q.right_question == question["response"]:
+                    right.append(question)
+
+        # faz uma contagem de quantas questoes estao corretas
+        total = len(right)
+
+        # busca as questoes atreladas ao quiz
+        disserty = questions_disserty.findByQuiz(u["id_quiz"])
+        multiple = questions_multiple.findByQuiz(u["id_quiz"])
+
+        # verifica o total de questoes existentes
+        total_questions = len(disserty) + len(multiple)
+
+        # monta o json para retorno
+        right_question = {"name":u["name"],
+                    "email": u["email"],
+                    "name_quiz": u["name_quiz"],
+                    "right_question": total,
+                    "total_questions": total_questions}
+
+        results.append(right_question)
+
+    print(results)
+
+
     return render_template("admin/results/userResults.html", results=results)
 
 

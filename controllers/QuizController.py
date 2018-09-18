@@ -12,7 +12,8 @@ class QuizController():
         return quizDB.query.get(id)
 
     def findLastOne(self):
-        return quizDB.query.order_by(quizDB.id.desc()).first() 
+        return quizDB.query.order_by(quizDB.id.desc()).first()
+
       
     def insertQuiz(self, info):
         quiz = quizDB()

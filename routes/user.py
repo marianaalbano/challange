@@ -60,9 +60,10 @@ def user_response(id_quiz):
                                  "id_question":responses[-1], 
                                  "response":request.form[responses]})
             else:
+                id_option = request.form["option"].split("_")
                 response.append({"type":"multiple", 
-                                 "id_question":responses[-1], 
-                                 "response":request.form[responses]})
+                                 "id_question":id_option[0], 
+                                 "response":id_option[1]})
                 
                 
         user_response.name = current_user.name
