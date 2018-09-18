@@ -4,6 +4,8 @@ from flask_login import LoginManager, login_required, login_user, logout_user, c
 from admin_required import admin_required
 from controllers.Users import User
 from controllers.QuizController import QuizController
+from controllers.ResponseController import ResponseController
+
 from model.Users import db
 from model.UserResponse import UserResponse
 
@@ -27,12 +29,13 @@ def user_quizzes(id):
     quizzes = User()
     quizzes = quizzes.findUserQuiz(id)
 
+    response = ResponseController()
 
     for quiz_available in quizzes:
         id_user = id
         id_quiz = quiz_available.id
 
-        user_response = UserResponse.objects(id_user=str(id_user), id_quiz=str(id_quiz))
+        user_response = response.findUserQuiz(str(id_user), str(id_quiz))
 
         if user_response:
             continue

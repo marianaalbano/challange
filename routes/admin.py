@@ -3,6 +3,8 @@ from flask_login import LoginManager, login_required, login_user, logout_user
 
 from admin_required import admin_required
 from controllers.Users import User
+from controllers.ResponseController import ResponseController
+
 from controllers.QuizController import QuizController
 from model.Users import db
 
@@ -70,6 +72,15 @@ def delete_user(id):
     usuario = User()
     usuario = usuario.removeUser(id)
     return redirect('/admin/users')
+
+
+@admin.route("/admin/results")
+@login_required
+@admin_required
+def results_all():
+    results = ResponseController()
+    results = usuario.findAll()
+    return render_template("admin/results/userResults.html", results=results)
 
 
 
