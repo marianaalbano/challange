@@ -30,40 +30,39 @@
 <div class="page-container">
     <div class="main-content">
             
-                <div style="width: 99%; margin-left: auto; margin-right: auto; margin-top: -2%;  text-align: center" class="shadow p-3 mb-5 bg-white rounded">
-                    <h3>
-                      Usuários Cadastrados
-                      
-                    </h3>
+        <div style="width: 99%; margin-left: auto; margin-right: auto; margin-top: -2%;  text-align: center" class="shadow p-3 mb-5 bg-white rounded">
+            <h3>
+                Usuários Cadastrados
                 
-                                        
-                <div style="margin-left: 20px; margin-right: 20px">    
-                    <table class="table">
-                     <thead class="thead-light">
+            </h3>
+        
+                                
+            <div style="margin-left: 20px; margin-right: 20px">    
+                <table class="table">
+                    <thead class="thead-light">
                         <tr>
-                            
-                            <th scope="col">Nome</th>
+                             <th scope="col">Nome</th>
                             <th scope="col">E-mail</th>
                             <th scope="col">Questionário</th>
                             <th scope="col">Resultado</th>
                             <th scope="col">Opções</th>
                         </tr>
                     </thead>
-                        {% for result in results %}
+                     {% for result in results %}
+                        <tr>
+                            <th> {{ result.name }} </th>
+                            <th> {{ result.email }} </th>
+                            <th>  {{ result.name_quiz }}</th>
+                            <th>  </th>
+                            <th>Expandir</th>
+                        </tr>
+                                                                   
+                    {% endfor %} 
                         
-                            <tr>
-                                
-                                <th> {{ result.name }} </th>
-                                <th> {{ result.id_quiz }} </th>
-                                <th> {{ usuario.username }} </th>
-                                <th> {{ usuario.telefone }} </th> 
-                                <th scope="col"><a href="/admin/user/{{ usuario.id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;<a href="/admin/user/{{ usuario.id }}/remove"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
-                            </tr>
-                        {% endfor %}
-                
-                    </table>
-                </div>                 
-                </div>
+                            
+                </table>
+            </div>
+        </div>            
     </div>
 </div>
 {% endblock %}
