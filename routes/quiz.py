@@ -40,7 +40,7 @@ def edit_quiz(id):
     quiz = QuizController()
     if request.method == 'POST':
         quiz.updateQuiz(id,request.form)
-        return redirect("admin/quiz/quizList.html")
+        return redirect("admin/quiz")
     else:
         quiz = quiz.findOne(id)
         q_disserty = QuestionsDisserty()
@@ -65,6 +65,4 @@ def add_quiz_user(id_user):
     if request.method == "POST":
         quiz = QuizController()
         quiz.addUser(id_user, request.form)
-        return ('teste')
-    else:
-        return ("teste")
+        return redirect('admin/users')

@@ -28,7 +28,7 @@ class QuizController():
     def updateQuiz(self, id, info):
         quiz = quizDB.query.get(id)
         quiz.name = info['name']
-        quiz.responsetime = info['response_time']
+        quiz.responsetime = info['time']
         quiz.dificulty = info['dificulty']
         return db.session.commit()
 
