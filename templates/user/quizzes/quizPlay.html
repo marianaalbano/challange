@@ -35,12 +35,21 @@
                 <div style="width: 96%; margin-left: auto; margin-right: auto; margin-top: -2%;  text-align: left" class="shadow-sm p-3 mb-5 bg-white rounded">
                     <div style="margin-left: 80px"> 
                         
+<<<<<<< HEAD
                             <div class="form-group">
                                 <label  class="col-sm-10 col-form-label">Pergunta:  {{ question.question }} </label>
                                 <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="option_1"> &nbsp;&nbsp; {{ question.option_1 }}</label>
                                 <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="option_2"> &nbsp;&nbsp; {{ question.option_2 }}</label>
                                 <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="option_3"> &nbsp;&nbsp; {{ question.option_3 }}</label>
                                 <label  class="col-sm-10 col-form-label"><input type="radio" name="option" value="option_4"> &nbsp;&nbsp; {{ question.option_4 }}</label>
+=======
+                            <div class="form-group row">
+                                <label  class="col-sm-10 col-form-label">{{ question.question }}</label>
+                                <label  class="col-sm-10 col-form-label"><input type="radio" name="multiple_{{ question.id }}" value="option_1"> {{ question.option_1 }}</label>
+                                <label  class="col-sm-10 col-form-label"><input type="radio" name="multiple_{{ question.id }}" value="option_2"> {{ question.option_2 }}</label>
+                                <label  class="col-sm-10 col-form-label"><input type="radio" name="multiple_{{ question.id }}" value="option_3"> {{ question.option_3 }}</label>
+                                <label  class="col-sm-10 col-form-label"><input type="radio" name="multiple_{{ question.id }}" value="option_4"> {{ question.option_4 }}</label>
+>>>>>>> db1b89108e2e4d525bf29961356c07d6d6815dfe
                             </div>                        
                     </div>
                 </div>

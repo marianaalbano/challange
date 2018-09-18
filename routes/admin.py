@@ -70,3 +70,6 @@ def delete_user(id):
     usuario = User()
     usuario = usuario.removeUser(id)
     return redirect('/admin/users')
+
+
+
