@@ -24,25 +24,20 @@ def change_profile_user(id):
 @login_required
 def user_quizzes(id):
     lista = []
-
-    user_response = UserResponse.objects(id_user='%s' %current_user.id)
-
     quizzes = User()
     quizzes = quizzes.findUserQuiz(id)
-    print (type(user_response.count()))
-    if user_response.count() > 0:
-        print("cai aqui")
-        for quiz_available in quizzes:
-            for quiz_answered in user_response:
-                if int(quiz_available.id) == int(quiz_answered["id_quiz"]):
-                    print ("cai no if")
-                    continue
-                else:
-                    print("cai no else")
-                    lista.append(quiz_available)
 
-    else:
-        lista = quizzes
+
+    for quiz_available in quizzes:
+        id_user = id
+        id_quiz = quiz_available.id
+
+        user_response = UserResponse.objects(id_user=str(id_user), id_quiz=str(id_quiz))
+
+        if user_response:
+            continue
+        else:
+            lista.append(quiz_available)
     
     return render_template("user/quizzes/quizList.html", quizzes=lista)
 
