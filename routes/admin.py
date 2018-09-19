@@ -60,7 +60,6 @@ def new_user():
 def edit_user(id):
     usuario = User()
     if request.method == 'POST':
-        print(request.form)
         usuario = usuario.updateUser(id,request.form)
         return redirect('/admin/users')
     else:
@@ -131,7 +130,6 @@ def results_all():
 
             results.append(right_question)
 
-        print(results)
     except Exception as e:
         print (e)
 

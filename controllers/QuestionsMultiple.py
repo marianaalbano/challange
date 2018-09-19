@@ -15,8 +15,6 @@ class QuestionsMultiple():
         return Multiple.query.filter_by(quiz_id=id).all()
 
     def insertQM(self, id, info):
-        try:
-            print(info)
             quiz = QuizController()
             q_id = quiz.findOne(id)
             qm = Multiple()
@@ -29,13 +27,12 @@ class QuestionsMultiple():
             qm.quiz_id = q_id.id
             db.session.add(qm)
             return db.session.commit()
-        except Exception as e:
-            print ("erro", e)
 
     
     def updateQM(self, id, info):
         qm = Multiple.query.get(id)
-        qm.question = info['questions']
+        print (qm.question)
+        qm.question = info['question']
         qm.option_1 = info['option_1']
         qm.option_2 = info['option_2']
         qm.option_3 = info['option_3']

@@ -27,7 +27,7 @@ class QuestionsDisserty():
     
     def updateQD(self, id, info):
         qd = Disserty.query.get(id)
-        qd.questions = info['questions']
+        qd.questions = info['question']
         qd.right_question = info['right_question']
         return db.session.commit()
 

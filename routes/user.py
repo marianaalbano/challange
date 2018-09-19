@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 
-from admin_required import admin_required
+from nocache import nocache
 from controllers.Users import User
 from controllers.QuizController import QuizController
 from controllers.ResponseController import ResponseController
@@ -46,6 +46,7 @@ def user_quizzes(id):
 
 @user.route("/user/quiz/<id_quiz>/questions", methods=["GET", "POST"])
 @login_required
+@nocache
 def user_response(id_quiz):
     questions = QuizController()
     questions = questions.findOne(id_quiz)

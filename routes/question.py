@@ -51,8 +51,8 @@ def edit_multiple(id, id_question):
     q_multiple = QuestionsMultiple()
 
     if request.method == 'POST':
-        q_multiple.updateQM(id,request.form)
-        return redirect("/admin/quiz/%s/questions" %id)
+        q_multiple.updateQM(id_question,request.form)
+        return redirect("/admin/quiz/%s/edit" %id)
         
     else:
         questions = q_multiple.findOne(id_question)
@@ -64,11 +64,9 @@ def edit_multiple(id, id_question):
 @admin_required
 def edit_disserty(id, id_question):
     q_disserty = QuestionsDisserty()
-
     if request.method == 'POST':
-        q_disserty.updateQD(id,request.form)
-        return redirect("/admin/quiz/%s/questions" %id)
-        
+        q_disserty.updateQD(id_question,request.form)
+        return redirect("/admin/quiz/%s/edit" %id)
     else:
         questions = q_disserty.findOne(id_question)
         return render_template("admin/quiz/<id>/questionEdit.html", questions=questions)

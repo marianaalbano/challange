@@ -53,7 +53,6 @@ class User():
             db.session.commit()
             return 200
         except Exception as e:
-            print(e)
             return 403
 
 
