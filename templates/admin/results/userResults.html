@@ -57,7 +57,7 @@
                             <th> {{ result.email }} </th>
                             <th>  {{ result.name_quiz }}</th>
                             <th>  {{ result.right_question }} / {{ result.total_questions }}</th>
-                            <th>Validar</th>
+                            <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Validate"> Validar </button> </th>
                         </tr>
                                                                    
                     {% endfor %} 
@@ -83,5 +83,48 @@
             </div>
         </div>            
     </div>
+</div>
+   <!-- Modal -->
+   <div class="modal fade" id="Validade" tabindex="-1" role="dialog" aria-labelledby="Validate" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form method=post action="#">
+        <div class="modal-header">
+          <h5 class="modal-title" id="Validate">Questionário Respondido</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+            <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                       
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Resposta escolhida:</th>
+                    <th scope="col">Resposta correta:</th>
+                    
+                  </tr>
+                </thead>
+          {% for quiz in quizzes %}
+                  
+                      <tr>
+                          <th> {{ quiz.name }} </th>
+                          <th> {{ quiz.category }} </th>
+                          <th> {{ quiz.dificulty }} </th>
+                          <th><input type="checkbox" id="checkboxQuiz" name="{{ quiz.name }}" value="{{ quiz.id }}" /></th>                                
+                      </tr>
+            {% endfor %}
+            </table>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+      </form>
+    </div>
+  </div>
 </div>
 {% endblock %}
