@@ -52,8 +52,7 @@ def edit_multiple(id, id_question):
 
     if request.method == 'POST':
         q_multiple.updateQM(id_question,request.form)
-        return redirect("/admin/quiz/%s/edit" %id)
-        
+        return redirect("/admin/quiz/%s/questions" %id)        
     else:
         questions = q_multiple.findOne(id_question)
         return render_template("admin/quiz/<id>/questionEdit.html", questions=questions)
@@ -66,25 +65,25 @@ def edit_disserty(id, id_question):
     q_disserty = QuestionsDisserty()
     if request.method == 'POST':
         q_disserty.updateQD(id_question,request.form)
-        return redirect("/admin/quiz/%s/edit" %id)
+        return redirect("/admin/quiz/%s/questions" %id)
     else:
         questions = q_disserty.findOne(id_question)
         return render_template("admin/quiz/<id>/questionEdit.html", questions=questions)
 
-@question.route("/admin/quiz/<id>/questions/<id_question>/remove")
+
+@question.route("/admin/quiz/<id>/questions_multiple/<id_question>/remove")
 @login_required
 @admin_required
-def remove_question(id, id_question):
-    if request.method == 'POST':
-        if request.form["type"] == "multiple":
-            q_multiple = QuestionsMultiple()
-            q_multiple.removeQM(id)
-            
-        else:
-            q_disserty = QuestionsDisserty()
-            q_disserty.removeQD(id)
+def remove_multiple(id, id_question):
+    q_multiple = QuestionsMultiple()
+    q_multiple.removeQM(id_question)
+    return redirect("admin/quiz/%s/edit" %id)
 
-        return redirect("/admin/quiz/%s/questions" %id)
 
-    else:
-        return render_template("admin/quiz/questionRemove.html")
+@question.route("/admin/quiz/<id>/questions_disserty/<id_question>/remove")
+@login_required
+@admin_required
+def remove_disserty(id, id_question):
+    q_disserty = QuestionsDisserty()
+    q_disserty.removeQD(id_question)
+    return redirect("admin/quiz/%s/edit" %id)

@@ -12,6 +12,8 @@ from controllers.QuestionsMultiple import QuestionsMultiple
 
 from model.Users import db
 
+from controllers.Email import Email
+
 
 admin = Blueprint('admin', __name__)
 
@@ -49,6 +51,8 @@ def new_user():
     if request.method == 'POST':
         usuario = User()
         usuario = usuario.insertUser(request.form)
+        #email = Email()
+        #email.sendEmaiil(request.form)
         return redirect('/admin/users')
     else:
         return render_template("admin/userCadastro.html")
@@ -66,6 +70,9 @@ def edit_user(id):
         usuario = usuario.findOne(id)
         quiz = QuizController()
         quizzes = quiz.findAll()
+        for quiz in quizzes:
+            pass
+            
         return render_template("admin/userEdit.html", usuario=usuario, quizzes=quizzes)
 
 

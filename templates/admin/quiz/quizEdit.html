@@ -79,7 +79,7 @@
                           <div class="form-group row">
                             <div class="col-sm-10">
                               <button type="submit" class="btn btn-primary">Editar</button>
-                              <button type="reset" class="btn btn-primary">Apagar</button>
+                              <a href="/admin/quiz/{{ quiz.id }}/remove"><button class="btn btn-primary">Apagar</button></a>
                             </div>
                           </div>
                         </form>
@@ -174,7 +174,7 @@
                                           <div class="form-group row">
                                             <div class="col-sm-10">
                                               <button type="submit" class="btn btn-primary">Editar</button>
-                                              <button type="reset" class="btn btn-primary">Apagar</button>
+                                              <a href="/admin/quiz/{{ quiz.id }}/questions_multiple/{{ question.id }}/remove"><button type="submit" class="btn btn-primary">Apagar</button></a>
                                             </div>
                                           </div>
                                                                           
@@ -221,7 +221,7 @@
                                           <div class="form-group row">
                                             <div class="col-sm-10">
                                               <button type="submit" class="btn btn-primary">Editar</button>
-                                              <button type="reset" class="btn btn-primary">Apagar</button>
+                                              <a href="/admin/quiz/{{ quiz.id }}/questions_disserty/{{ question.id }}/remove"><button type="reset" class="btn btn-primary">Apagar</button></a>
                                             </div>
                                           </div>
                                 
